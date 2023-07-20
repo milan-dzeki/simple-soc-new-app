@@ -34,7 +34,7 @@ exports.signup = catchAsync(async(req, res, next) => {
     gender
   } = req.fields;
 
-  if(!password || (password && password.length > 6)) return next(new AppError("Password witn at least 6 characters is required", 400));
+  if(!password || (password && password.length < 6)) return next(new AppError("Password witn at least 6 characters is required", 400));
   if(!passwordConfirm) return next(new AppError("Password confirmation is required", 400));
   if(password !== passwordConfirm) return next(new AppError("Passwords must be the same", 400));
   if(!firstName || !lastName) return next(new AppError("First and Last names are required", 400));
