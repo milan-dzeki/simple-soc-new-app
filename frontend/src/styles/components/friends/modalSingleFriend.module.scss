@@ -1,0 +1,58 @@
+@import '../../utils/variables';
+
+.friend {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  background-color: #eee;
+  border-radius: 0.5rem;
+  padding: 2rem 4rem;
+  transition: all 0.2s ease-out;
+
+  @media (max-width: 900px) {
+    padding: 1rem 2rem;
+  }
+  
+  &:hover {
+    background-color: $main-dark;
+  }
+
+  &:hover &__image {
+    border-color: white;
+  }
+
+  &:hover &__name {
+    color: white;
+  }
+
+  &__image {
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 2rem;
+    border: 0.5rem solid $main-dark;
+
+    @media (max-width: 900px) {
+      height: 6rem;
+      width: 6rem;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-size: 2rem;
+    font-weight: 500;
+    color: $main-dark;
+
+    @media (max-width: 900px) {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@import '../../utils/variables';
+@import '../../utils/mixins.scss';
+@import '../../utils/animations';
+
+.modal {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 70rem;
+  border-radius: 0.5rem;
+  animation: modalAppear 0.2s ease-out;
+
+  @media (max-width: 750px) {
+    width: 90%;
+  }
+
+  &__list {
+    background-color: white;
+    max-height: 70vh;
+    overflow-y: auto;
+    border-radius: 0 0 0.5rem 0.5rem;
+    padding: 2rem 4rem; 
+    @include scroll();
+  }
+}

@@ -1,0 +1,76 @@
+@import '../../utils/variables';
+
+.input {
+  position: relative;
+  width: 17rem;
+
+  &__icon { 
+    position: absolute;
+    font-size: 2rem;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5rem;
+    top: 0.3rem;
+    right: 0.2rem;
+    cursor: pointer;
+  }
+
+  &__input {
+    font-size: 1.6rem;
+    border: 2px solid $main-dark;
+    border-radius: 0.5rem;
+    width: 100%;
+    transition: all 0.2s ease-out;
+
+    input {
+      font: inherit;
+      width: 100%;
+      padding: 0.25rem 1rem;
+      border-radius: 0.5rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    &:hover {
+      box-shadow: 1px 1px 10px 10px rgba(red, 0.5);
+      font-weight: 600;
+    }
+  }
+
+  &__options {
+    position: absolute;
+    background-color: #ccc;
+    box-shadow: 1px 1px 10px 10px rgba(black, 0.5);
+    top: 90%;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    border-radius: 0.5rem;
+  }
+
+  &__opt {
+    padding: 0.75rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $main-dark;
+      color: white;
+    }
+    
+    &:not(:last-child) {
+      border-bottom: 1px solid grey;
+    }
+
+    &:first-child {
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+    &:last-child {
+      border-radius: 0 0 0.5rem 0.5rem;
+    }
+  }
+}

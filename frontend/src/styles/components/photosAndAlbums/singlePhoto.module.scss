@@ -1,0 +1,90 @@
+@import '../../utils/variables';
+
+.photo {
+  height: calc(100vh - 10rem);
+  display: flex;
+
+  @media (max-width: 1000px) {
+    display: block;
+  }
+
+  &__img {
+    height: 85vh;
+    flex: 1 0 50%;
+    overflow: hidden;
+
+    @media (max-width: 1400px) {
+      flex: 1 0 40%;
+    }
+
+    @media (max-width: 1000px) {
+      height: 60vh;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      transform-origin: 0;
+      object-fit: contain;
+    }
+  }
+
+  &__info {
+    flex: 1 0 auto;
+    padding: 2rem;
+    overflow-y: auto;
+    background-color: #ccc;
+    border-radius: 0.5rem;
+    margin-left: 2rem;
+
+    @media (max-width: 1000px) {
+      padding: 0.5rem;
+      margin-left: 0;
+    }
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(black, 0.5);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid $main-dark;
+    background-color: #eee;
+
+    &_img {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      border: 0.2rem solid $dark-blue;
+      overflow: hidden;
+      margin-right: 1rem;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &_name {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: $main-dark;
+      margin-bottom: 0.5rem;
+
+      &:hover {
+        color: $dark-red;
+        text-decoration: underline;
+      }
+    }
+    
+    &_created {
+      color: grey;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+  }
+}

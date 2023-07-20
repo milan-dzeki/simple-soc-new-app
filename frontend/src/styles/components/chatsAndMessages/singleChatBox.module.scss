@@ -1,0 +1,197 @@
+@import '../../utils/variables';
+
+.chat {
+  background-color: #ccc;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+  display: flex;
+  padding: 2rem 4rem;
+  position: relative;
+  transition: all 0.2s ease-out;
+  cursor: pointer;
+
+  @media (max-width: 600px) {
+    padding: 1rem 1.5rem;
+  }
+
+  &__cp {
+    @media (max-width: 1700px) {
+      padding: 1rem 2rem 3rem 2rem;
+    }
+
+    @media (max-width: 1500px) {
+      padding: 1rem 1rem 3rem 1rem;
+    }
+
+    .chat__image {
+      @media (max-width: 1700px) {
+        height: 4rem;
+        width: 4rem;
+        margin-right: 1rem;
+      }
+    }
+
+    .chat__username {
+      @media (max-width: 1500px) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .chat__message {
+      @media (max-width: 1500px) {
+        font-size: 1.3rem;
+      }
+
+      &_status {
+        @media (max-width: 1500px) {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .chat__unseen {
+      @media (max-width: 1500px) {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+
+    .chat__time {
+      @media (max-width: 1500px) {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  &:hover {
+    background-color: $main-dark;
+  }
+
+  &:hover &__image {
+    border-color: white;
+  }
+
+  &:hover &__username {
+    color: white;
+  }
+
+  &:hover &__message {
+    color: white;
+  }
+
+  &:hover &__time {
+    color: white;
+  }
+
+  &__image {
+    height: 6rem;
+    width: 6rem;
+    overflow: hidden;
+    border: 0.2rem solid $main-dark;
+    border-radius: 50%;
+    margin-right: 2rem;
+
+    @media (max-width: 600px) {
+      height: 4rem;
+      width: 4rem;
+      margin-right: 1rem;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__username {
+    font-size: 1.6rem;
+    color: $main-dark;
+    font-weight: 700;
+    margin-bottom: 1rem;
+
+    @media (max-width: 600px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__message {
+    font-size: 1.5rem;
+    color: $main-dark;
+
+    @media (max-width: 600px) {
+      font-size: 1.4rem;
+    }
+
+    &_photo {
+      display: flex;
+
+      &_icon {
+        display: flex;
+        margin-right: 0.25rem;
+      }
+    }
+
+    &_text {
+      display: flex;
+
+      &_me {
+        margin-right: 0.5rem;
+      }
+    }
+
+    &_status {
+      display: flex;
+      position: absolute;
+      bottom: 3.5rem;
+      right: 2rem;
+      margin-left: 2rem;
+      background-color: $dark-blue;
+      color: white;
+      border-radius: 50%;
+      padding: 0.5rem;
+      font-size: 2rem;
+
+      @media (max-width: 600px) {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  &__unseen {
+    position: absolute;
+    bottom: 50%;
+    right: 8rem;
+    transform: translateY(50%);
+    background-color: $dark-red;
+    color: white;
+    border-radius: 50%;
+    border: 1px solid white;
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    @media (max-width: 600px) {
+      height: 2rem;
+      width: 2rem;
+      bottom: 60%;
+    }
+  }
+
+  &__time {
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: grey;
+
+    @media (max-width: 600px) {
+      font-size: 1.2rem;
+    }
+  }
+}

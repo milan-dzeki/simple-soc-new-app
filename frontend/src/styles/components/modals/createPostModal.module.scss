@@ -1,0 +1,107 @@
+@import '../../utils/variables';
+@import '../../utils/animations';
+
+.modal {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100rem;
+  z-index: 2;
+  animation: modalAppear 0.2s ease-out;
+  background-color: white;
+  border-radius: 0.5rem;
+
+  @media (max-width: 1000px) {
+    width: 90%;
+  }
+
+  &__content {
+    position: relative;
+    padding-bottom: 5rem;
+  }
+
+  &__form {
+    border-radius: 0 0 0.5rem 0.5rem;
+    background-color: white;
+    padding: 0 2rem;
+    overflow-y: auto;
+    max-height: 60vh;
+  }
+
+  &__tagg {
+    margin: 0 1rem 2rem 1rem;
+    background-color: $main-dark;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    &_icon {
+      display: flex;
+      font-size: 3rem;
+      margin-right: 2rem;
+
+      @media (max-width: 1000px) {
+        font-size: 2rem;
+      }
+    }
+
+    &_text {
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+  }
+
+  &__tagged {
+    border-top: 1px solid grey;
+    padding: 1rem;
+    margin: 1rem;
+
+    &_title {
+      text-align: center;
+      color: $main-dark;
+      font-weight: 600;
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+
+    &_list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    &_friend {
+      display: flex;
+      align-items: center;
+      background-color: $main-dark;
+      border-radius: 0.5rem;
+      padding: 0.5rem 1rem;
+
+      &_name {
+        color: white;
+      }
+    }
+  }
+
+  &__btns {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    background-color: #eee;
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+}

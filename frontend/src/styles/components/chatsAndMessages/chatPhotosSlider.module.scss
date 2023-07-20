@@ -1,0 +1,107 @@
+@import '../../utils/variables';
+@import '../../utils/animations';
+
+.slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  bottom: 0;
+
+  &__content {
+    position: relative;
+  }
+
+  &__close {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background-color: $dark-red;
+    color: white;
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    padding: 1.5rem 4rem;
+    font-weight: 700;
+    box-shadow: 1px 1px 10px 5px rgba(white, 0.5);
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;
+
+    @media (max-width: 1200px) {
+      top: -1rem;
+      padding: 1rem 2rem;
+    }
+
+    @media (max-width: 1000px) {
+      top: -5rem;
+    }
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &__btn {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: $main-dark;
+    color: white;
+    display: flex;
+    font-size: 4rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    &_left {
+      left: 3rem;
+    }
+
+    &_right {
+      right: 3rem;
+    }
+  }
+
+  &__photo {
+    height: 80vh;
+    width: 80rem;
+    overflow: hidden;
+    margin: 5rem auto 0 auto;
+    border: 2px solid $main-dark;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 1000px) {
+      width: 80%;
+    }
+
+    &_img {
+      width: 100%;
+      flex: 1;
+      // height: 100%;
+      overflow: hidden;
+      background-color: white;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+    }
+
+    &_info {
+      background-color: $dark-blue;
+      color: white;
+      width: 100%;
+      font-size: 1.6rem;
+      padding: 1rem 2rem;
+    }
+  }
+}

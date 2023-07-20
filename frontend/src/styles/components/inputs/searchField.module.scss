@@ -1,0 +1,101 @@
+@import '../../utils/variables';
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(grey, 0.5);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  
+  &__left {
+    display: flex;
+    align-items: center;
+
+  }
+
+  &__results {
+    font-size: 1.6rem;
+
+    @media (max-width: 500px) {
+      font-size: 1.5rem;
+    }
+
+    .results {
+      font-weight: 700;
+      color: $dark-red;
+      margin-right: 2rem;
+    }
+  }
+
+  &__clear {
+    background-color: $dark-red;
+    color: white;
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    border: 1px solid $main-dark;
+    overflow: hidden;
+    border-radius: 0.5rem;
+
+    input {
+      font: inherit;
+      font-size: 1.5rem;
+      display: block;
+      height: 100%;
+      border: none;
+      padding: 0 1rem;
+    }
+
+    &_clear {
+      background-color: $dark-red;
+      color: white;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      padding: 0 0.75rem;
+      transition: opacity 0.2s ease-out;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  &__submit {
+    display: block;
+    height: 100%;
+    background-color: $dark-blue;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.5rem;
+    font-size: 2rem;
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    &:disabled {
+      background-color: rgba(grey, 0.5);
+      cursor: not-allowed;
+    }
+  }
+}

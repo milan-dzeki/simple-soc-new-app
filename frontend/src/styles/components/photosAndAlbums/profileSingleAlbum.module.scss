@@ -1,0 +1,118 @@
+@import '../../utils/variables';
+
+.album {
+  // width: 25rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 1rem;
+
+  flex: 0 1 25rem;
+
+  @media (max-width: 1600px) {
+    flex: 0 1 20rem;
+  }
+
+  &__content {
+    height: 25rem;
+    width: 100%;
+    border: 3px solid $main-dark;
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 1600px) {
+      height: 20rem;
+    }
+  }
+
+  &__preview {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:hover .album__overlay {
+      display: flex;
+    }
+
+    &_empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      background-color: white;
+      font-size: 2rem;
+      font-weight: 600;
+      color: $dark-red;
+    }
+
+    &_photo {
+      height: 100%;
+      width: 100%;
+      
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__name {
+    background-color: $main-dark;
+    color: white;
+    border-radius: 0.5rem 0.5rem 0 0;
+    font-size: 1.6rem;
+    padding: 1rem 2rem;
+
+    @media (max-width: 1600px) {
+      padding: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(black, 0.6);
+    display: none;
+  }
+
+  &__btn {
+    color: white;
+    background-color: $dark-blue;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    box-shadow: 1px 1px 10px 5px rgba(white, 0.5);
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+
+    input {
+      display: none;
+    }
+
+    &:hover {
+      padding: 0.75rem 3rem;
+      background-color: $dark-red;
+    }
+  }
+
+  &__num {
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    background-color: $dark-blue;
+  }
+}

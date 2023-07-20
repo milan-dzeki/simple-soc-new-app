@@ -1,0 +1,99 @@
+@import '../../utils/variables';
+
+.input {
+  margin: 2rem 1rem;
+
+  &__label {
+    background-color: $main-dark;
+    color: white;
+    border-radius: 0.5rem;
+    width: 100%;
+    display: block;
+    padding: 0.5rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    &_icon {
+      display: flex;
+      font-size: 3rem;
+      margin-right: 2rem;
+    }
+
+    &_text {
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    input {
+      display: none;
+    }
+  }
+
+  &__previews {
+    border-top: 1px solid grey;
+
+    &_title {
+      font-size: 1.6rem;
+      text-align: center;
+      margin: 1rem;
+      font-weight: 700;
+    }
+
+    &_list {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__preview {
+    width: 20rem;
+    border: 0.25rem solid $main-dark;
+    border-radius: 0.5rem;
+    // overflow: hidden;
+    margin: 1rem;
+    position: relative;
+
+    &_img {
+      height: 14rem;
+      width: 100%;
+      overflow: hidden;
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &_desc {
+      width: 100%;
+      padding: 1rem;
+      background-color: $main-dark;
+
+      &_label {
+        display: block;
+        font-size: 1.4rem;
+        color: white;
+        margin-bottom: 0.5rem;
+      }
+
+      input {
+        display: block;
+        width: 100%;
+        border: 1px solid #eee;
+        border-radius: 0.5rem;
+        font: inherit;
+        font-size: 1.4rem;
+        padding: 0.25rem 0.5rem;
+      }
+    }
+  }
+}

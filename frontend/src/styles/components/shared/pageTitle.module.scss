@@ -1,0 +1,18 @@
+@import '../../utils/variables';
+
+.title {
+  width: 100%;
+  margin-bottom: 2rem;
+
+  &__text {
+    font-size: 3rem;
+    color: $dark-blue;
+    padding-left: 1rem;
+  }
+
+  &__underline {
+    height: 0.25rem;
+    width: 100%;
+    background-color: $dark-blue;
+  }
+}

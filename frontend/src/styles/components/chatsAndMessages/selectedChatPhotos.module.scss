@@ -1,0 +1,138 @@
+@import '../../utils/variables';
+
+.photos {
+  border-left: 0.2rem solid $main-dark;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 7rem);
+  width: 0;
+  transition: width 0.2s ease-out;
+
+  &__empty {
+    text-align: center;
+    width: 100%;
+    font-size: 1.6rem;
+    color: $dark-blue;
+    font-weight: 700;
+  }
+
+  @media (max-width: 770px) {
+    height: calc(100vh - 5rem);
+  }
+
+  @media (max-width: 600px) {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // display: none;
+    width: auto;
+    height: 100%;
+    background-color: white;
+    display: none;
+  }
+
+  &__show {
+    width: 50rem;
+
+    @media (max-width: 1700px) {
+      width: 40rem;
+    }
+
+    @media (max-width: 1200px) {
+      width: 25rem;
+    }
+
+    @media (max-width: 600px) {
+      display: flex;
+      width: auto;
+    }
+  }
+
+  &__close {
+    display: none;
+    position: absolute;
+    background-color: $dark-red;
+    color: white;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    top: 1rem;
+    right: 1rem;
+
+    &:hover {
+      opacity: 0.75;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      display: block;
+    }
+  }
+
+  &__title {
+    background-color: $dark-blue;
+    position: relative;
+    padding: 2rem 0;
+  
+    h4 {
+      color: white;
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    @media (max-width: 1200px) {
+      padding: 1rem 0;
+      font-size: 1.5rem;
+    }
+  }
+
+  &__list {
+    padding: 2rem;
+    overflow-y: auto;
+    
+    @media (max-width: 1200px) {
+      padding: 1rem;
+    }
+
+    &_content {
+      display: flex;
+      flex-wrap: wrap;
+
+      .photo {
+        height: 16rem;
+        width: 13rem;
+        overflow: hidden;
+        margin: 0 1rem 1rem 1rem;
+        border: 0.2rem solid $main-dark;
+        border-radius: 0.5rem;
+        cursor: pointer;
+
+        &:hover img {
+          transform: scale(1.1);
+        }
+
+        @media (max-width: 1700px) {
+          height: 12rem;
+          width: 9.5rem;
+        }
+
+        @media (max-width: 1200px) {
+          height: 8rem;
+          width: 7rem;
+          margin: 0 0.25rem 0.5rem 0.25rem
+        }
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          transition: transform 0.2s ease-out;
+        }
+      }
+    }
+  }
+}

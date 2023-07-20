@@ -1,0 +1,21 @@
+
+
+.container {
+  padding: 2rem 0;
+  margin: 0 auto;
+
+  &__flex {
+    .container__data {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.big {
+  width: 90%;
+
+  @media (max-width: 550px) {
+    width: 95%;
+  }
+}

@@ -1,0 +1,31 @@
+@import '../../utils/variables';
+
+.title {
+  position: relative;
+  background-color: $dark-blue;
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 1.5rem 4rem;
+
+  &__text {
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+
+    @media(max-width: 1000px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  &__error {
+    display: flex;
+    align-items: center;
+    background-color: $dark-red;
+
+    .title__icon {
+      display: flex;
+      font-size: 3rem;
+      color: white;
+      margin-right: 1rem;
+    }
+  }
+}

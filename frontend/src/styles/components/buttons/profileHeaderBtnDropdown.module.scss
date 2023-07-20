@@ -1,0 +1,49 @@
+@import '../../utils/variables';
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 92%;
+  left: -5px;
+  right: -5px;
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+  z-index: 3;
+  box-shadow: 1px 1px 10px 5px rgba(white, 0.5);
+  border-radius: 0.5rem;
+
+  &__list {
+    position: relative;
+    z-index: 3;
+  }
+
+  &__show {
+    display: block;
+  }
+
+  &__friends {
+    background-color: $main-dark;
+  }
+
+  &__received {
+    background-color: $dark-blue;
+  }
+
+  &__sent {
+    background-color: $dark-red;
+  }
+
+  span {
+    display: block;
+    padding: 1rem 0;
+    border-top: 1px solid white;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      font-weight: 700;
+      letter-spacing: 2px;
+      cursor: pointer;
+    }
+  }
+}

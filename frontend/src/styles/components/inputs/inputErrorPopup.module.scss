@@ -1,0 +1,49 @@
+@import '../../utils/variables';
+
+.error {
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s ease;
+  z-index: 1;
+
+  &__show {
+    top: -3.5rem;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: $main-dark;
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem 0.5rem 0.5rem;
+  }
+
+  &__icon {
+    display: flex;
+    color: $error-red;
+    font-size: 2rem;
+    margin-right: 0.5rem;
+  }
+
+  &__text {
+    color: white;
+    font-size: 1.4rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__pointer {
+    height: 2rem;
+    width: 2rem;
+    background-color: $main-dark;
+    transform: rotateZ(45deg);
+    position: absolute;
+    top: 56%;
+    left: 2rem;
+  }
+}

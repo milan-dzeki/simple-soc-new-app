@@ -1,0 +1,90 @@
+@import '../../utils/variables';
+
+.form {
+  border-radius: 0.5rem;
+  width: 120rem;
+  margin: 4rem auto;
+  padding-bottom: 2rem;
+  background-color: #eee;
+
+  @media (max-width: 1300px) {
+    font-size: 2.5rem;
+    margin: 2rem auto;
+  }
+
+  @media(max-width: 1100px) {
+    width: 100rem;
+  }
+
+  @media(max-width: 940px) {
+    width: 70rem;
+  }
+
+  @media(max-width: 660px) {
+    width: 50rem;
+  }
+
+  &__small {
+    width: 80rem;
+
+    @media(max-width: 940px) {
+      width: 50rem;
+    }
+  }
+
+  &__btn {
+    background-color: $main-dark;
+    color: white;
+    display: block;
+    width: 90%;
+    margin: 4rem auto 2rem auto;
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    padding: 1rem 0;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+
+    @media(max-width: 940px) {
+      font-size: 1.5rem;
+    }
+
+    &:hover {
+      background-color: $medium-blue;
+    }
+
+    &:disabled {
+      background-color: grey;
+      opacity: 0.75;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: grey;
+      }
+    }
+  }
+
+  &__switch_text {
+    text-align: center;
+    color: $main-dark;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  &__switch_btn {
+    margin: 0 auto;
+    background-color: $dark-blue;
+    color: white;
+
+    font-size: 1.75rem;
+    border-radius: 0.5rem;
+    padding: 0.5rem 2rem;
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}

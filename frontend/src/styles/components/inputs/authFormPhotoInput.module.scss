@@ -1,0 +1,88 @@
+@import '../../utils/variables';
+
+.input {
+  display: flex;
+  align-items: center;
+  margin: 2rem 1.5rem 2rem 1.5em;
+
+  @media(max-width: 1300px) {
+    margin: 1rem 1.5rem 2rem 1.5em;
+  }
+
+  &__no_photo {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background-color: white;
+
+    @media(max-width: 1300px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  &__photo {
+    height: 12rem;
+    width: 12rem;
+    overflow: hidden;
+    border: 0.5rem solid $dark-blue;
+    border-radius: 1.5rem;
+    margin-right: 2rem;
+
+    @media(max-width: 1300px) {
+      height: 10rem;
+      width: 10rem;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__label {
+  
+    input {
+      display: none;
+    }
+  }
+
+  &__text {
+    font-size: 2rem;
+    padding: 0.5rem 2rem;
+    border-radius: 0.5rem;
+    color: white;
+    background-color: $dark-blue;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+
+    @media(max-width: 1300px) {
+      font-size: 1.75rem;
+    }
+
+    &:hover {
+      background-color: $main-dark;
+    }
+  }
+
+  &__btn {
+    display: block;
+    background-color: $error-red;
+    color: white;
+    width: 12rem;
+    text-align: center;
+    font-size: 1.6rem;
+    padding: 1rem 1rem;
+    border-radius: 0.5rem;
+    transform: translateY(-1rem);
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $main-dark;
+    }
+  }
+}

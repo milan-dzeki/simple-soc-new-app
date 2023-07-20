@@ -1,0 +1,38 @@
+@import '../../utils/variables';
+
+.setting {
+  flex: 0 0 calc(33.333% - 1rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $dark-blue;
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+
+    @media(max-width: 1600px) {
+      margin-bottom: unset;
+    }
+  }
+
+  @media(max-width: 1600px) {
+    flex: 0 0 calc(50% - 1rem);
+    margin-bottom: 2rem !important;
+  }
+
+  @media(max-width: 1000px) {
+    flex: 0 0 calc(100% - 1rem);
+    margin-bottom: 2rem !important;
+  }
+
+  &__name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $main-dark;
+    margin-right: 0.5rem;
+    color: white;
+  }
+}

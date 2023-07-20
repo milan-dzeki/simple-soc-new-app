@@ -1,0 +1,143 @@
+@import '../../utils/variables';
+
+.container {
+  padding: 5rem;
+  position: relative;
+
+  @media(max-width: 1650px) {
+    padding: 2rem 5rem;
+  }
+
+  @media (max-width: 750px) {
+    padding: 2rem 1rem;
+  }
+
+  &__active_fr {
+    background-color: $dark-blue;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0 0 0 0.5rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: 700;
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    @media (min-width: 1070px) {
+      display: none;
+    }
+  }
+
+  &__posts {
+    width: 80%;
+
+    @media (max-width: 980px) {
+      width: 100%;
+    }
+  }
+
+  &__users {
+    width: 50rem;
+    position: fixed;
+    top: 12rem;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-top-left-radius: 0.5rem;
+
+    @media(max-width: 1075px) {
+      width: 30rem;
+    }
+
+    @media(max-width: 1650px) {
+      width: 40rem;
+      top: 9rem;
+    }
+
+    @media(max-width: 1069px) {
+      border-top: 2px solid white;
+      border-radius: 0;
+      display: none;
+      top: 7rem;
+      z-index: 2;
+
+      &_show {
+        display: block;
+      }
+    }
+
+    @media (max-width: 380px) {
+      width: 100%;
+    }
+
+    @media(max-width: 770px) {
+      top: 5rem;
+    }
+
+    &_title {
+      background-color: $main-dark;
+      color: white;
+      text-align: center;
+      font-size: 1.75rem;
+      padding: 0.75rem 0;
+      border-top-left-radius: 0.5rem;
+
+      @media(max-width: 1650px) {
+        font-size: 1.6rem;
+        padding: 0.5rem 0;
+      }
+
+      @media (max-width: 1070px) {
+        border-radius: 0;
+      }
+
+      @media(max-width: 980px) {
+        border-radius: 0;
+      }
+    }
+
+    &_close {
+      width: 80%;
+      background-color: $dark-red;
+      font-weight: 700;
+      color: white;
+      margin: 1rem auto 1rem auto;
+      padding: 0.5rem 0;
+      border-radius: 0.5rem;
+      display: none;
+      transition: opacity 0.2s ease-out;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.75;
+      }
+
+      @media (max-width: 1069px) {
+        display: block;
+      }
+    }
+
+    &_list {
+      height: 100%;
+      overflow-y: auto;
+      padding-bottom: 4rem;
+
+      &_empty {
+        text-align: center;
+        padding-top: 2rem;
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: $dark-red;
+
+        @media(max-width: 1650px) {
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+*, *::after, *::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+
+  @media (max-width: 1300px) {
+    font-size: 57%;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+button {
+  display: block;
+  outline: none;
+  border: none;
+}
+
+img {
+  display: block;
+}
+
+input {
+  outline: none;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  display: block;
+}

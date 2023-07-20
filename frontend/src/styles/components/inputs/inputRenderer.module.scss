@@ -1,0 +1,47 @@
+@import '../../utils/variables';
+
+.inputs {
+  
+  &__flex {
+    display: flex;
+
+    @media (max-width: 940px) {
+      display: block;
+    }
+
+    .inputs__group {
+      flex: 1;
+      padding: 2rem 4rem;
+
+      @media (max-width: 1100px) {
+        padding: 2rem;
+      }
+
+      @media (max-width: 1100px) {
+        padding: 2rem 4rem;
+      }
+
+      @media (max-width: 940px) {
+        padding: 2rem;
+      }
+
+      &:not(:last-child) {
+        border-right: 1px solid #ccc;
+      }
+    }
+  }
+  
+  &__group {
+    &_title {
+      font-size: 2rem;
+      text-transform: capitalize;
+      color: $main-dark;
+      border-bottom: 1px solid #ccc;
+      margin: 0 1rem 0 1rem;
+
+      @media (max-width: 1300px) {
+        font-size: 1.8rem;
+      }
+    }
+  }
+}

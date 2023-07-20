@@ -1,0 +1,66 @@
+@import '../../utils/variables';
+
+.icon {
+  position: relative;
+  margin-right: 2rem;
+
+  @media (max-width: 770px) {
+    margin-right: 1rem;
+  }
+
+  @media (max-width: 350px) {
+    margin-right: 0.25rem;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.75rem;
+    background-color: $dark-blue;
+    border-radius: 50%;
+    color: white;
+    padding: 0.75rem;
+    transition: background-color 0.2s ease-out;
+    cursor: pointer;
+
+    @media (max-width: 1500px) {
+      font-size: 2.5rem;
+    }
+
+    @media (max-width: 770px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 490px) {
+      font-size: 1.5rem;
+    }
+
+    &:hover {
+      background-color: $medium-blue;
+    }
+  }
+
+  &__num {
+    position: absolute;
+    top: -0.5rem;
+    right: -1rem;
+    border: 0.2rem solid white;
+    background-color: $error-red;
+    border-radius: 50%;
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.75rem;
+    font-weight: 800;
+
+    @media (max-width: 1500px) {
+      font-size: 1.4rem;
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+  }
+}

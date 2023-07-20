@@ -1,0 +1,31 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: rgba(black, 0.5);
+  display: none;
+
+  &__transparent {
+    background-color: transparent;
+  }
+
+  &__show {
+    display: block;
+  }
+
+  &__activefr {
+    @media(min-width: 1070px) {
+      display: none;
+    }
+  }
+
+  &__ssslider {
+    z-index: 3;
+    @media(min-width: 1200px) {
+      display: none;
+    }
+  }
+}

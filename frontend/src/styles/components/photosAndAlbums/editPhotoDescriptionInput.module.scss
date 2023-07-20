@@ -1,0 +1,48 @@
+@import '../../utils/variables';
+
+.input {
+  z-index: 4;
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  border: 1px solid red;
+  background-color: #fff;
+  padding: 0 1rem 1.5rem 1rem;
+  border-radius: 0.5rem;
+
+  &__field {
+    flex: 1;
+  }
+
+  &__btns {
+    display: flex;
+    margin-left: 1rem;
+  }
+
+  &__btn {
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
+    padding: 1.2rem 2rem;
+    color: white;
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    &_submit {
+      margin-right: 1rem;
+      background-color: $main-dark;
+
+      &:disabled {
+        background-color: rgba(grey, 0.5);
+        cursor: not-allowed;
+      }
+    }
+
+    &_cancel {
+      background-color: $dark-red;
+    }
+  }
+}

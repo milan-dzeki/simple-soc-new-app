@@ -1,0 +1,25 @@
+@import '../../utils/variables';
+@import '../../utils/animations';
+
+.form {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  width: 70rem;
+  animation: modalAppear 0.2s ease-out;
+
+  &__form {
+    background-color: #eee;
+    border-radius: 0 0 0.5rem 0.5rem;
+    padding: 1rem 4rem 3rem 4rem;
+  }
+
+  &__btns {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}

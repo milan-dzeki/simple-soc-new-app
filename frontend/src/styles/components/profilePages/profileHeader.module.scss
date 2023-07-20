@@ -1,0 +1,223 @@
+@import '../../utils/variables';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border: 0.25rem solid grey;
+  background-color: #eee;
+  padding: 2rem 10rem;
+  border-radius: 0.5rem;
+  height: 20rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: 1600px) {
+    height: 15rem;
+    align-items: center;
+  }
+
+  @media (max-width: 900px) {
+    padding: 1.5rem 3rem;
+  }
+
+  @media (max-width: 700px) {
+    padding: 1.5rem 1.5rem;
+  }
+
+  @media (max-width: 550px) {
+    height: unset;
+  }
+
+  &__users {
+    @media (max-width: 550px) {
+      height: unset;
+      display: block;
+      padding: 0.75rem;
+
+      .header__left {
+        justify-content: center;
+      }
+    }
+  }
+
+  &__auth {
+    justify-content: center;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__photo {
+    height: 15rem;
+    width: 15rem;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 0.5rem solid $main-dark;
+    margin-right: 7rem;
+
+    @media (max-width: 1600px) {
+      height: 12rem;
+      width: 12rem;
+    }
+
+    @media (max-width: 900px) {
+      margin-right: 2rem;
+      height: 9rem;
+      width: 9rem;
+    }
+
+    @media (max-width: 550px) {
+      margin-right: 0.5rem;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &_auth {
+      margin-right: 7rem;
+
+      @media (max-width: 550px) {
+        margin-right: 1rem;
+      }
+      
+      &_img {
+        margin: 0 auto;
+        height: 13rem;
+        width: 13rem;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 0.5rem solid $main-dark;
+
+        @media (max-width: 1600px) {
+          height: 10rem;
+          width: 10rem;
+        }
+
+        @media (max-width: 900px) {
+          height: 7.5rem;
+          width: 7.5rem;
+        }
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .btns {
+        display: flex;
+
+        @media (max-width: 550px) {
+          display: block;
+        }
+      }
+
+      .label {
+        display: block;
+        background-color: $main-dark;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        margin-right: 0.5rem;
+        text-align: center;
+        transition: opacity 0.2s ease-out;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.75;
+        }
+
+        @media (max-width: 550px) {
+          margin-top: 0.5rem;
+          padding: 0.25rem 1rem;
+        }
+
+        &__text {
+          font-size: 1.6rem;
+          color: white;
+          text-align: center;
+
+          @media (max-width: 1600px) {
+            font-size: 1.4rem;
+          }
+        }
+
+        input {
+          display: none;
+        }
+      }
+
+      .remove {
+        display: block;
+        background-color: $dark-red;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        font-size: 1.6rem;
+        color: white;
+        text-align: center;
+        transition: opacity 0.2s ease-out;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.75;
+        }
+
+        @media (max-width: 1600px) {
+          font-size: 1.4rem;
+        }
+
+        @media (max-width: 550px) {
+          margin-top: 0.5rem;
+          padding: 0.25rem 1rem;
+        }
+      }
+    }
+  }
+
+  &__name {
+    font-size: 4rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+
+    @media (max-width: 1600px) {
+      font-size: 3rem;
+    }
+
+    @media (max-width: 900px) {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__created {
+    text-align: center;
+    font-size: 1.75rem;
+
+    @media (max-width: 900px) {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+  }
+
+  &__btns {
+    max-height: 100%;
+
+    @media (max-width: 1600px) {
+      max-height: unset;
+    }
+
+    @media (max-width: 550px) {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+  }
+}

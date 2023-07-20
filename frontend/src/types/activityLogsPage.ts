@@ -1,0 +1,3 @@
+export interface IActivityLog {
+  action: "sentFriendRequest" | "unsendFriendRequest" | "acceptFriendRequest" | "declineFriendRequest" | "unfriendUser" | "searchUser" | "blockUser" | "createPost" | "editPost" | "deletePost" | "createAlbum" | "deleteAlbum" | "addPhotoToAlbum" | "deletePhotoFromAlbum" | "likePost" | "unlikePost" | "commentPost" | "editCommentOnPost" | "deleteCommentFromPost" | "likePostComment" | "unlikePostComment" | "likePhoto" | "unlikePhoto" | "commentPhoto" | "deleteCommentFromPhoto" | "sendMessage";
+}

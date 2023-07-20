@@ -1,0 +1,55 @@
+@import '../../utils/variables';
+
+.container {
+
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    border-radius: 0.5rem 0.5rem 0 0;
+    overflow: hidden;
+  }
+
+  &__link {
+    display: block;
+    flex: 1 1 10rem;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 1.75rem;
+    color: white;
+    background-color: $dark-blue;
+    border: 1px solid white;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $medium-blue;
+    }
+
+    @media (max-width: 1600px) {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 700px) {
+      font-size: 1.4rem;
+    }
+
+    &_active {
+      background-color: $main-dark;
+
+      &:hover {
+        background-color: $main-dark;
+      }
+    }
+  }
+
+  &__data {
+    padding: 2rem;
+    background-color: #eee;
+
+    @media (max-width: 1000px) {
+      padding: 0.5rem;
+    }
+  }
+}

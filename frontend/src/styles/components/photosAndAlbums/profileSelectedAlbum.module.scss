@@ -1,0 +1,76 @@
+@import '../../utils/variables';
+
+.album {
+  &__name {
+    color: $main-dark;
+    border-bottom: 1px solid #ccc;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+
+    @media (max-width: 1600px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  &__photos {
+    display: flex;
+    flex-wrap: wrap;
+
+    &_empty {
+      text-align: center;
+      flex: 1;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: $dark-red;
+    }
+  }
+
+  &__photo {
+    height: 25rem;
+    position: relative;
+    width: 25rem;
+    overflow: hidden;
+    box-shadow: 1px 1px 10px rgba(black, 0.5);
+    margin: 0.5rem;
+    cursor: pointer;
+
+    @media (max-width: 1600px) {
+      height: 20rem;
+      width: 20rem;
+    }
+
+    &:hover img {
+      transform: scale(1.2);
+    }
+
+    &:hover &_delete {
+      bottom: 0;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.2s ease-out;
+    }
+
+    &_delete {
+      position: absolute;
+      bottom: -3rem;
+      left: 0;
+      right: 0;
+      background-color: $dark-red;
+      color: white;
+      transition: all 0.2s ease-out;
+      z-index: 1;
+      padding: 0.5rem 0;
+      font-weight: 700;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+}

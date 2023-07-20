@@ -1,0 +1,28 @@
+@import '../../utils/variables';
+
+.btn {
+  font-size: 1.75rem;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  margin: 0 1rem;
+  color: white;
+  transition: opacity 0.2s ease-out;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &:disabled {
+    background-color: rgba(grey, 0.5);
+    cursor: not-allowed;
+  }
+
+  &__cancel, &__ok {
+    background-color: $main-dark;
+  }
+
+  &__confirm {
+    background-color: $dark-red;
+  }
+}

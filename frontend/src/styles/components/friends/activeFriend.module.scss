@@ -1,0 +1,118 @@
+@import '../../utils/variables';
+
+.friend {
+  margin: 2rem 3rem;
+  background-color: white;
+  border-radius: 0.5rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+
+  @media (max-width: 1180px) {
+    flex-direction: column;
+  }
+
+  @media(max-width: 1650px) {
+    margin: 1rem;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+
+    @media(max-width: 1075px) {
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &__image {
+    margin-right: 2rem;
+    position: relative;
+
+    @media(max-width: 1075px) {
+      margin-right: 1rem;
+    }
+
+    &_photo {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 0.2rem solid $main-dark;
+
+      @media(max-width: 1075px) {
+        height: 3.5rem;
+        width: 3.5rem;
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__active {
+    height: 2rem;
+    width: 2rem;
+    background-color: green;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -0.5rem;
+    right: -0.5rem;
+    border: 2px solid white;
+
+    @media(max-width: 1075px) {
+      height: 1.25rem;
+      right: 0;
+      width: 1.25rem;
+    }
+  }
+
+  &__name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: $main-dark;
+
+    @media(max-width: 1075px) {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__options {
+    @media(max-width: 1180px) {
+      display: flex;
+    }
+  }
+
+  &__link, &__msg {
+    display: block;
+    font-size: 1.5rem;
+    flex: 1;
+    color: white;
+    padding: 0.9rem 1rem;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    @media(max-width: 1075px) {
+      font-size: 1.4rem;
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  &__link {
+    background-color: $main-dark;
+  }
+
+  &__msg {
+    background-color: $dark-blue;
+  }
+}

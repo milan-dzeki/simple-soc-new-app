@@ -1,0 +1,288 @@
+@import '../../utils/variables';
+
+.slider {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+
+  &__content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+  }
+
+  &__close_ss {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background-color: $dark-red;
+    color: white;
+    font-size: 1.75rem;
+    padding: 0.5rem 2rem;
+    border-radius: 0.5rem;
+    display: none;
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    @media (max-width: 1200px) {
+      display: block;
+    }
+  }
+
+  &__comments_show {
+    position: absolute;
+    top: 2rem;
+    right: 12rem;
+    background-color: $dark-blue;
+    color: white;
+    font-size: 1.75rem;
+    padding: 0.5rem 2rem;
+    border-radius: 0.5rem;
+    display: none;
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    @media (max-width: 1200px) {
+      display: block;
+    }
+  }
+
+  &__photo {
+    position: relative;
+    background-color: $main-dark;
+    height: 100%;
+    overflow: hidden;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 10rem 0;
+
+    @media (max-height: 600px) {
+      padding: 2rem 0;
+    }
+
+    &_btn {
+      position: absolute;
+      display: flex;
+      font-size: 10rem;
+      top: 50%;
+      background-color: transparent;
+      color: $dark-blue;
+      transform: translateY(-50%);
+      transition: color 0.2s ease-out;
+      cursor: pointer;
+
+      &:hover {
+        color: $dark-red;
+      }
+
+      &_left {
+        left: -2rem;
+      }
+
+      &_right {
+        right: -2rem;
+      }
+    }
+
+    &_image {
+      max-height: 100%;
+      max-width: 80%;
+
+      @media (max-height: 600px) {
+        height: 100%;
+        width: 80%;
+        max-height: unset;
+        max-width: unset;
+      }
+
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+
+  &__info {
+    height: 100vh;
+    width: 60rem;
+    background-color: white;
+    padding-top: 9.1rem;
+    overflow-y: auto;
+    position: relative;
+    display: block;
+
+    @media (max-width: 1700px) {
+      width: 50rem;
+    }
+
+    @media (max-width: 1200px) {
+      width: 50rem;
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 999;
+
+      &_ss_show {
+        display: block;
+      }
+    }
+
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+
+    &_top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid grey;
+      padding: 2rem;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 60rem;
+      height: 9.1rem;
+      background-color: white;
+      z-index: 1;
+
+      @media (max-width: 1700px) {
+        width: 50rem;
+      }
+
+      @media (max-width: 600px) {
+        padding: 1rem;
+        width: 100%;
+      }
+    }
+
+    &_user {
+      display: flex;
+      align-items: center;
+
+      &_image {
+        height: 5rem;
+        width: 5rem;
+        border-radius: 50%;
+        border: 0.2rem solid $dark-blue;
+        overflow: hidden;
+        margin-right: 1rem;
+
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &_name {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: $main-dark;
+        margin-bottom: 0.5rem;
+
+        @media (max-height: 600px) {
+          font-size: 1.5rem;
+        }
+
+        &:hover {
+          color: $dark-red;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &_date {
+      color: grey;
+      font-size: 1.5rem;
+      font-weight: 600;
+
+      @media (max-height: 600px) {
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  &__close {
+    background-color: $dark-red;
+    color: white;
+    font-size: 1.75rem;
+    padding: 0.5rem 2rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $main-dark;
+    }
+
+    @media (max-height: 600px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__close_comments {
+    display: none;
+    background-color: $dark-blue;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0.5rem 2rem;
+    border-radius: 0.5rem;
+    position: absolute;
+    right: 1rem;
+    top: 4rem;
+    transition: background-color 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $main-dark;
+    }
+
+    @media (max-width: 600px) {
+      display: block;
+    }
+  }
+
+  &__desc {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+
+    &_text {
+      font-size: 1.5rem;
+      margin-right: 2rem;
+    }
+
+    &_edit {
+      display: flex;
+      color: $dark-red;
+      background-color: transparent;
+      font-size: 3rem;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+  }
+
+  &__likes_and_comments {
+    padding: 0 2rem;
+  }
+}

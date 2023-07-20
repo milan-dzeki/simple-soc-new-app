@@ -1,0 +1,25 @@
+@import '../../utils/variables';
+
+.edu {
+  display: flex;
+  margin-bottom: 0.5rem;
+
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(grey, 0.5);
+  }
+  
+  &__content {
+    font-size: 1.5rem;
+
+    span {
+      color: $dark-red;
+      font-weight: 500;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+  }
+}

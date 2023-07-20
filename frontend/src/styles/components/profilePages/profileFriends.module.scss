@@ -1,0 +1,54 @@
+@import '../../utils/variables';
+
+.friends {
+  &__btns {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    @media (max-width: 600px) {
+      flex-wrap: wrap;
+    }
+  }
+
+  &__btn {
+    background-color: $main-dark;
+    color: white;
+    border-radius: 0.5rem;
+    text-transform: capitalize;
+    padding: 0.5rem 1rem;
+    margin-right: 1rem;
+    font-size: 1.6rem;
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    @media (max-width: 1600px) {
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 600px) {
+      flex: 1 0 auto;
+      margin: 1rem;
+    }
+
+    &_active {
+      background-color: $dark-blue;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+
+    &_empty {
+      font-size: 2rem;
+      font-weight: 700;
+      flex: 1 0 100%;
+      text-align: center;
+    }
+  }
+}

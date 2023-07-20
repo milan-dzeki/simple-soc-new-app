@@ -1,0 +1,29 @@
+@import '../../utils/variables';
+
+.friend {
+  display: flex;
+  background-color: $main-dark;
+  color: white;
+  margin: 0 1rem 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+
+  &__name {
+    font-size: 1.4rem;
+    margin-right: 1rem;
+  }
+
+  &__remove {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.2rem 0.2rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $dark-red;
+      color: white;
+    }
+  }
+}

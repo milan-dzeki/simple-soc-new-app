@@ -1,0 +1,97 @@
+@import '../../utils/variables';
+
+.link {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  color: $main-dark;
+  border-radius: 0.5rem;
+  padding: 0.5rem 2rem;
+  margin-left: 1rem;
+  transition: all 0.2s ease-out;
+
+  @media (max-width: 1500px) {
+    padding: 0.5rem 1rem;
+  }
+
+  &__mh {
+    @media (max-width: 1030px) {
+      position: relative;
+      margin-left: 2rem;
+
+      &:hover .link__text {
+        display: block;
+      }
+
+      .link__icon {
+        margin-right: 0;
+      }
+
+      .link__text {
+        position: absolute;
+        background-color: $dark-blue;
+        color: white;
+        width: 15rem;
+        text-align: center;
+        z-index: 1;
+        top: 95%;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 0.5rem;
+        font-size: 1.5rem;
+        padding: 0.5rem 0;
+        display: none;
+      }
+    }
+
+    @media (max-width: 650px) {
+      margin-left: 1rem;
+    }
+
+    @media (max-width: 490px) {
+      padding: 0.5rem; 
+
+      .link__icon {
+        font-size: 1.6rem;
+      }
+    }
+
+    @media (max-width: 350px) {
+      padding: 0.25rem 0.5rem;
+
+      .link__icon {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &__active {
+    background-color: $dark-blue;
+    color: white;
+  }
+
+  &:hover {
+    background-color: $light-blue;
+    color: white;
+  }
+
+  &__icon {
+    display: flex;
+    font-size: 3rem;
+    margin-right: 1rem;
+
+    @media (max-width: 1500px) {
+      font-size: 2rem;
+    }
+  }
+
+  &__text {
+    display: block;
+    font-size: 1.75rem;
+    font-weight: 500;
+
+    @media (max-width: 1500px) {
+      font-size: 1.6rem;
+    }
+  }
+}

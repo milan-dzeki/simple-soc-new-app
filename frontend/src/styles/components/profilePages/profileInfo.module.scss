@@ -1,0 +1,194 @@
+@import '../../utils/variables';
+
+.info {
+
+  &__no_profile {
+    text-align: center;
+    color: $main-dark;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  &__content {
+
+  }
+
+  &__top {
+    display: flex;
+    align-items: stretch;
+
+    @media (max-width: 1400px) {
+      display: block;
+    }
+  }
+
+  &__box {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+
+    @media (max-width: 1600px) {
+      padding: 1rem;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+
+      @media (max-width: 1600px) {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .no_info {
+      text-align: center;
+      color: $main-dark;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    &_title {
+      border-bottom: 2px solid $medium-blue;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      h4 {
+        font-size: 2rem;
+        color: $dark-blue;
+        padding-left: 1rem;
+      }
+    }
+
+    &_btn {
+      background-color: $main-dark;
+      color:white;
+      padding: 0.2rem 1.5rem;
+      border-radius: 0.5rem;
+      font-size: 1.45rem;
+      margin-bottom: 0.2rem;
+      transition: background-color 0.2s ease-out;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $dark-red;
+      }
+
+      @media (max-width: 1600px) {
+        padding: 0.2rem 1rem;
+        font-size: 1.3rem;
+      }
+    }
+
+    &_basic {
+      margin-right: 2rem;
+
+      @media (max-width: 1600px) {
+        margin-right: 1rem;
+      }
+    }
+
+    &_work {
+      flex: 1;
+      margin-bottom: 2rem;
+
+      @media (max-width: 1600px) {
+        margin-bottom: 1rem;
+      }
+    }
+
+    &_data {
+      @media (max-width: 1400px) {
+        padding: 1rem 4rem;
+      }
+      &_item {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+
+        @media (max-width: 1600px) {
+          font-size: 1.4rem;
+        }
+
+        .key {
+          color: $main-dark;
+          font-weight: 500;
+        }
+
+        .value {
+          font-weight: 700;
+          color: $dark-blue;
+        }
+      }
+    }
+
+    &_dataflex {
+      display: flex;
+
+      @media (max-width: 1400px) {
+        display: block;
+      }
+
+      &_subbox {
+        padding: 0 2rem;
+        flex: 0 0 50%;
+
+        @media (max-width: 1600px) {
+          padding: 0 1rem;
+        }
+
+        @media (max-width: 1400px) {
+          background-color: #eee;
+          border-radius: 0.5rem;
+          padding: 2rem;
+          margin: 1rem;
+        }
+
+        &:not(:last-child) {
+          border-right: 1px solid grey;
+
+          @media (max-width: 1400px) {
+            border-right: none;
+          }
+        }
+        .title {
+          margin-bottom: 1rem;
+          border-bottom: 1px solid $medium-blue;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          
+          h4 {
+            font-size: 1.5rem;
+            color: $medium-blue;
+            margin-right: 1rem;
+          }
+        }
+
+        .item {
+          font-size: 1.5rem;
+          display: flex;
+          align-items: center;
+
+          @media (max-width: 1600px) {
+            font-size: 1.4rem;
+          }
+
+          &__info {
+            margin-right: 1rem;
+          }
+          span {
+            color: $dark-red;
+            font-weight: 600;
+          }
+        }
+        &__stretch {
+          flex: 1;
+
+          @media (max-width: 1400px) {
+            flex: unset;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import '../../utils/variables';
+@import '../../utils/animations';
+
+.modal {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rem;
+  z-index: 2;
+  animation: modalAppear 0.2s ease-out;
+
+  @media (max-width: 600px) {
+    width: 90%;
+  }
+
+  &__body {
+    border-radius: 0 0 0.5rem 0.5rem;
+    background-color: white;
+    padding: 2rem 4rem;
+  }
+  &__text {
+    text-align: center;
+    font-size: 1.75rem;
+    margin-bottom: 4rem;
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

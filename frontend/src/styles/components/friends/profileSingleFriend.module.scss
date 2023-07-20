@@ -1,0 +1,127 @@
+@import '../../utils/variables';
+
+.friend {
+  background-color: #ccc;
+  border-radius: 0.5rem;
+  width: 30rem;
+  overflow: hidden;
+  margin: 0 2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (max-width: 1600px) {
+    margin: 0 1rem 1rem 1rem;
+  }
+
+  @media (max-width: 700px) {
+    flex: 0 0 80%;
+    margin: 0 auto 2rem auto;
+  }
+
+  @media (max-width: 400px) {
+    flex: 0 0 95%;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  &__img {
+    margin-right: 2rem;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 0.5rem solid $main-dark;
+
+    @media (max-width: 1600px) {
+      height: 8rem;
+      width: 8rem;
+    }
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__name {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: $main-dark;
+    margin-bottom: 1rem;
+
+    @media (max-width: 1600px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  &__mutuals {
+    color: grey;
+    background-color: transparent;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+      color: $main-dark;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1600px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__yours {
+    background-color: $medium-blue;
+    color: white;
+    text-align: center;
+    border-radius: 0.5rem;
+    padding: 0.25rem 0;
+    font-size: 1.4rem;
+  }
+
+  &__btns {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__btn {
+    display: block;
+    text-align: center;
+    flex: 1 0 50%;
+    font-size: 1.5rem;
+    padding: 0.75rem 0;
+    color: white;
+    font-weight: 600;
+    background-color: grey;
+    border-right: 1px solid white;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    @media (max-width: 1600px) {
+      font-size: 1.3rem;
+      padding: 0.5rem 0;
+    }
+
+    &_view {
+      background-color: $dark-blue;
+    }
+
+    &_block {
+      background-color: $dark-red;
+    }
+
+    &_msg {
+      background-color: $main-dark;
+    }
+  }
+}

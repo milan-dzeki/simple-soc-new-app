@@ -1,0 +1,161 @@
+@import '../../utils/variables';
+
+.btn {
+  width: 20rem;
+  position: relative;
+
+  @media (max-width: 700px) {
+    width: 15rem;
+  }
+
+  @media (max-width: 550px) {
+    margin-right: 0.5rem;
+    flex: 1 0 15rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 2rem;
+
+    @media (max-width: 1600px) {
+      margin-bottom: 0.75rem;
+    }
+
+    @media (max-width: 700px) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__add_friend, &__received_friend_request {
+    .btn__button {
+      background-color: $dark-blue;
+    }
+  }
+
+  &__sent_friend_request {
+    .btn__button {
+      background-color: $error-red;
+    }
+    .btn__dropdown_list {
+      background-color: $error-red;
+    }
+  }
+
+  &__message {
+    .btn__button {
+      background-color: $main-dark;
+    }
+  }
+
+  &__block {
+    .btn__button {
+      background-color: $dark-red;
+    }
+  }
+
+  &__received_friend_request {
+    .btn__dropdown_list {
+      background-color: $dark-blue;
+    }
+  }
+
+  &__friends {
+    .btn__button {
+      background-color: $main-dark;
+    }
+    .btn__dropdown_list {
+      background-color: $main-dark;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    color: white;
+    padding: 1rem 2rem 1rem 1rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    position: relative;
+    transition: opacity 0.2s ease-out;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.75;
+    }
+
+    &_icon {
+      display: flex;
+      font-size: 2rem;
+      margin-right: 1rem;
+
+      @media (max-width: 1600px) {
+        font-size: 1.4rem;
+      }
+
+      @media (max-width: 700px) {
+        font-size: 1.3rem;
+        margin-right: 0.5rem;
+      }
+    }
+
+    &_text {
+      font-size: 1.5rem;
+      font-weight: 600;
+
+      @media (max-width: 1600px) {
+        font-size: 1.3rem;
+      }
+    }
+
+    &_arrow {
+      margin-left: 1rem;
+      display: flex;
+      font-size: 3rem;
+      position: absolute;
+      right: 0.5rem;
+
+      @media (max-width: 1600px) {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  &__dropdown {
+    display: none;
+    
+    border-radius: 0.5rem;
+    
+    &_block {
+      display: block;
+    }
+    &_list {
+      overflow: hidden;
+      border: 1px solid white;
+      position: absolute;
+      z-index: 2;
+      top: 90%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      border-radius: 0 0 0.5rem 0.5rem;
+      color: white;
+
+      span {
+        display: block;
+        border-top: 1px solid white;
+        padding: 1rem 0;
+        font-size: 1.45rem;
+        transition: all 0.1s ease-out;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $main-dark;
+        }
+
+        @media (max-width: 1600px) {
+          font-size: 1.35rem;
+        }
+      }
+    }
+  }
+}
