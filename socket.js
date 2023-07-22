@@ -1,7 +1,54 @@
 const io = require("socket.io");
 const User = require("./models/userModel");
 
-const runSocket = (server, activeUsers, addActiveUser, removeActiveUser) => {
+let activeUsers = [];
+
+const addActiveUser = (userId, socketId) => {
+  const isUserInList = activeUsers.find(user => user.userId.toString() === userId.toString());
+  if(!isUserInList) {
+    activeUsers = [
+      ...activeUsers.map(user => ({userId: user.userId, socketIds: [...user.socketIds]})), 
+      {userId, socketIds: [socketId]}
+    ];
+  } else {
+    const userIndex = activeUsers.findIndex(user => user.userId.toString() === userId.toString());
+    if(userIndex !== -1) {
+      const updatedUser = {
+        ...isUserInList,
+        socketIds: [...isUserInList.socketIds, socketId]
+      }
+      
+      activeUsers[userIndex] = updatedUser;
+    }
+  }
+
+  return activeUsers;
+};
+
+const removeActiveUser = async(socketId) => {
+  const disconnectingUser = activeUsers.find(user => user.socketIds.includes(socketId));
+  if(disconnectingUser) {
+    await User.findByIdAndUpdate(disconnectingUser.userId, {lastTimeSeen: Date.now()});
+
+    let newActiveUsers = activeUsers.map(user => ({userId: user.userId, socketIds: [...user.socketIds]}));
+
+    const userIndex = activeUsers.findIndex(user => user.socketIds.includes(socketId));
+
+    const newSocketIds = disconnectingUser.socketIds.filter(id => id !== socketId);
+    disconnectingUser.socketIds = newSocketIds;
+    newActiveUsers[userIndex] = disconnectingUser;
+
+    if(disconnectingUser.socketIds.length === 0) {
+      newActiveUsers = activeUsers.filter(user => user.userId !== disconnectingUser.userId);
+    }
+
+    activeUsers = newActiveUsers;
+    return newActiveUsers;
+  }
+  return activeUsers;
+};
+
+const runSocket = (server) => {
   const IO = io(server, {
     cors: {
       origin: "*"
@@ -11,48 +58,28 @@ const runSocket = (server, activeUsers, addActiveUser, removeActiveUser) => {
   IO.on("connection", (socket) => {
     console.log("User Connected");
 
-    socket.on("addActiveUser", async({userId}) => {
-      const activeUsers = await addActiveUser(userId, socket.id);
-      IO.emit("getActiveUsers", {activeUsers});
+    socket.on("addActiveUser", ({userId}) => {
+      const newActiveUsers = addActiveUser(userId, socket.id);
+      IO.emit("getActiveUsers", {activeUsers: newActiveUsers});
     });
 
-    // socket.on("sendMessage", ({
-    //   userId,
-    //   chatId,
-    //   newLastMessage,
-    //   message
-    // }) => {
-    //   const user = activeUsers.find(user => user.userId === userId);
-    //   if(user) {
-    //     socket.to(user.socketId).emit("receiveMessage", {userId, chatId, newLastMessage, message});
-    //   }
-    // });
     socket.on("sendMessage", ({
       userId,
       chatId,
       newLastMessage,
       message
     }) => {
-      const user = activeUsers.find(user => user.userId === userId);
+      console.log(userId,
+      chatId,
+      newLastMessage,
+      message);
+      const user = activeUsers.find(user => user.userId.toString() === userId.toString());
       if(user) {
         user.socketIds.forEach(socketId => {
           socket.to(socketId).emit("receiveMessage", {userId, chatId, newLastMessage, message});
         });
       }
     });
-    
-
-    // socket.on("userSeenMessages", ({
-    //   userId,
-    //   chatId,
-    //   newUnreadMsgsList,
-    //   hasLastMsg
-    // }) => {
-    //   const user = activeUsers.find(user => user.userId === userId);
-    //   if(user) {
-    //     socket.to(user.socketId).emit("seenMessages", {userId, chatId, newUnreadMsgsList, hasLastMsg});
-    //   }
-    // });
 
     socket.on("userSeenMessages", ({
       userId,
@@ -68,22 +95,6 @@ const runSocket = (server, activeUsers, addActiveUser, removeActiveUser) => {
       }
     });
 
-    // socket.on("sendNotificationList", ({notifications}) => {
-    //   const userIds = notifications.map(notif => notif.user);
-
-    //   userIds.forEach(userId => {
-    //     const userIsActive = activeUsers.find(user => user.userId === userId);
-
-    //     if(userIsActive) {
-    //       const targetNotification = notifications.find(notif => notif.user === userIsActive.userId);
-    //       if(targetNotification) {
-    //         socket.to(userIsActive.socketId).emit("receiveNotification", {notification: targetNotification});
-    //         console.log("TARGET", targetNotification);
-    //       }
-          
-    //     }
-    //   });
-    // });
     socket.on("sendNotificationList", ({notifications}) => {
       const userIds = notifications.map(notif => notif.user);
 
@@ -96,21 +107,11 @@ const runSocket = (server, activeUsers, addActiveUser, removeActiveUser) => {
             userIsActive.socketIds.forEach(socketId => {
               socket.to(socketId).emit("receiveNotification", {notification: targetNotification});
             });
-            
-            console.log("TARGET", targetNotification);
           }
-          
         }
       });
     });
 
-    // socket.on("sendSingleNotification", ({notification}) => {
-    //   const user = activeUsers.find(user => user.userId.toString() === notification.user.toString());
-      
-    //   if(user) {
-    //     socket.to(user.socketId).emit("receiveNotification", {notification});
-    //   }
-    // });
     socket.on("sendSingleNotification", ({notification}) => {
       const user = activeUsers.find(user => user.userId.toString() === notification.user.toString());
       
@@ -121,13 +122,6 @@ const runSocket = (server, activeUsers, addActiveUser, removeActiveUser) => {
       }
     });
 
-    // socket.on("sendFriendRequest", ({notification, user}) => {
-    //   const userExists = activeUsers.find(user => user.userId.toString() === notification.user.toString());
-      
-    //   if(userExists) {
-    //     socket.to(userExists.socketId).emit("receiveFriendRequest", {notification, user});
-    //   }
-    // });
     socket.on("sendFriendRequest", ({notification, user}) => {
       const userExists = activeUsers.find(user => user.userId.toString() === notification.user.toString());
       
@@ -135,17 +129,9 @@ const runSocket = (server, activeUsers, addActiveUser, removeActiveUser) => {
         userExists.socketIds.forEach(socketId => {
           socket.to(socketId).emit("receiveFriendRequest", {notification, user});
         });
-        
       }
     });
     
-    // socket.on("unsendFriendRequest", ({authUserId, targetUserId}) => {
-    //   const user = activeUsers.find(user => user.userId.toString() === targetUserId);
-
-    //   if(user) {
-    //     socket.to(user.socketId).emit("friendRequestWithdrawn", {userId: authUserId});
-    //   }
-    // });
     socket.on("unsendFriendRequest", ({authUserId, targetUserId}) => {
       const user = activeUsers.find(user => user.userId.toString() === targetUserId);
 
@@ -156,14 +142,6 @@ const runSocket = (server, activeUsers, addActiveUser, removeActiveUser) => {
         
       }
     });
-
-    // socket.on("acceptFriendRequest", ({notification, user}) => {
-    //   const userExists = activeUsers.find(user => user.userId.toString() === notification.user.toString());
-
-    //   if(userExists) {
-    //     socket.to(userExists.socketId).emit("friendRequestAccepted", {notification, user});
-    //   }
-    // });
 
     socket.on("acceptFriendRequest", ({notification, user}) => {
       const userExists = activeUsers.find(user => user.userId.toString() === notification.user.toString());
@@ -176,13 +154,6 @@ const runSocket = (server, activeUsers, addActiveUser, removeActiveUser) => {
       }
     });
 
-    // socket.on("unfriend", ({authUserId, targetUserId}) => {
-    //   const user = activeUsers.find(user => user.userId.toString() === targetUserId);
-
-    //   if(user) {
-    //     socket.to(user.socketId).emit("unfriended", {userId: authUserId});
-    //   }
-    // });
     socket.on("unfriend", ({authUserId, targetUserId}) => {
       const user = activeUsers.find(user => user.userId.toString() === targetUserId);
 
@@ -199,7 +170,6 @@ const runSocket = (server, activeUsers, addActiveUser, removeActiveUser) => {
       if(disconnectingUser) {
         await User.findByIdAndUpdate(disconnectingUser.userId, {lastTimeSeen: Date.now()});
       }
-      // const newActiveUsers = await removeActiveUser(disconnectingUser.socketId);
       const newActiveUsers = await removeActiveUser(socket.id);
       
       IO.emit("getActiveUsers", {activeUsers: newActiveUsers});
@@ -211,8 +181,8 @@ const runSocket = (server, activeUsers, addActiveUser, removeActiveUser) => {
 
     socket.on("disconnect", async() => {
       console.log("User disconnected");
-      const activeUsers = await removeActiveUser(socket.id);
-      IO.emit("getActiveUsers", {activeUsers});
+      const newActiveUsers = await removeActiveUser(socket.id);
+      IO.emit("getActiveUsers", {activeUsers: newActiveUsers});
     });
   });
 };

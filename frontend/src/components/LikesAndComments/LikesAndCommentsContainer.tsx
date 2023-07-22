@@ -1,4 +1,4 @@
-import { FC, memo, ChangeEventHandler, FormEvent, useState, useEffect } from 'react';
+import { FC, ChangeEventHandler, FormEvent, useState, useEffect } from 'react';
 import styles from '../../styles/components/likesAndComments/likesAndCommentsContainer.module.scss';
 // hooks
 import { useTypedSelector } from '../../hooks/useTypedSelector';

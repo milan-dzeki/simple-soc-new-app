@@ -24,6 +24,7 @@ import axiosFriends from '../axios/axiosFriends';
 import ProfileUserPhotos from '../components/ProfilePages/ProfileUserPhotos';
 import ProfileUserFriends from '../components/ProfilePages/ProfileUserFriends';
 import Spinner from '../components/Shared/Spinner';
+import { removeActiveUser } from '../store/actions/activeUsersActions';
 
 const UserProfilePage: FC = () => {
   const navigate = useNavigate();

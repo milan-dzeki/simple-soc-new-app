@@ -1,0 +1,31 @@
+
+
+.info {
+  padding: 2rem 4rem;
+
+  &__title {
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  &__box {
+    background-color: #eee;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  &__subtitle {
+    color: rgb(85, 85, 85);
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+  }
+}

@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import styles from '../../styles/components/chatsAndMessages/selectedChatPhotos.module.scss';
 import { IMessage } from '../../store/types/chatsTypes';
 import ChatPhotosSlider from './ChatPhotosSlider';
@@ -16,34 +16,6 @@ interface Props {
 }
 
 const SelectedChatPhotos: FC<Props> = (props) => {
-  const [sliderShow, setSliderShow] = useState(false);
-  const [photoIndex, setPhotoIndex] = useState(0);
-
-  const [smallScreenPhotosShow, setSmallScreenPhotosShow] = useState(false);
-
-  // const onOpenPhotoSlider = (photoIndex: number): void => {
-  //   setPhotoIndex(photoIndex);
-  //   setSliderShow(true);
-  // };
-
-  // const onChatPhotoSliderClose = (): void => {
-  //   setSliderShow(false);
-  // };
-
-  // const onPrevPhoto = (): void => {
-  //   setPhotoIndex(prev => {
-  //     if(prev === 0) return props.photoMessages.length - 1;
-  //     return prev - 1;
-  //   });
-  // };
-
-  // const onNextPhoto = (): void => {
-  //   setPhotoIndex(prev => {
-  //     if(prev === props.photoMessages.length - 1) return 0;
-  //     return prev + 1;
-  //   });
-  // };
-
   return (
     <>
       {props.sliderShow && (

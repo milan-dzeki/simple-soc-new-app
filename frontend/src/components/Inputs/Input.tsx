@@ -1,4 +1,4 @@
-import { FC, ChangeEventHandler, memo, ChangeEvent } from 'react';
+import { FC, memo, ChangeEvent } from 'react';
 import styles from '../../styles/components/inputs/input.module.scss';
 // types
 import { IInput, IInputElementTypes } from '../../types/formsAndInputs/inputType';

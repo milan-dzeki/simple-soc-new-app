@@ -10,10 +10,22 @@
   width: 70rem;
   animation: modalAppear 0.2s ease-out;
 
+  @media (max-width: 750px) {
+    width: 90%;
+  }
+
+  @media (max-width: 500px) {
+    width: 98%;
+  }
+
   &__form {
     background-color: #eee;
     border-radius: 0 0 0.5rem 0.5rem;
     padding: 1rem 4rem 3rem 4rem;
+
+    @media (max-width: 750px) {
+      padding: 1rem;
+    }
   }
 
   &__btns {

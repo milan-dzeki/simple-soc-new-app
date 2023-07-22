@@ -13,7 +13,7 @@ const ChatsBox: FC<Props> = (props) => {
   const { authUser } = useTypedSelector(state => state.auth);
   const { chatsLoading, chatsErrorMsg, chats } = useTypedSelector(state => state.chats);
 
-  const [smallScreenChatsShow, setSmallScreenChatsShow] = useState(false);
+  const [smallScreenChatsShow, setSmallScreenChatsShow] = useState(true);
 
   // const [btnActive, setBtnActive] = useState<"all" | "online" | "offline">("all");
 

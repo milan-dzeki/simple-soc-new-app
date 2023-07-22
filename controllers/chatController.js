@@ -71,8 +71,23 @@ exports.sendModalMessage = catchAsync(async(req, res, next) => {
 
   await targetChat.save();
 
+  const populatedMessage = await newMessage.populate([
+    {
+      path: "sender",
+      model: "User",
+      select: "_id fullName profilePhotoUrl"
+    },{
+      path: "receiver",
+      model: "User",
+      select: "_id fullName profilePhotoUrl"
+    }
+  ]);
+
   res.status(200).json({
-    status: "success"
+    status: "success",
+    chatId: targetChat._id,
+    newMessage: populatedMessage,
+    newLastMessage: targetChat.lastMessage
   });
 });
 

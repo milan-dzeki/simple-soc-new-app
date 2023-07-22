@@ -19,6 +19,7 @@ import ModalBtn from '../../Buttons/ModalBtn';
 // redux
 import { blockUser, onClearAuthError, resetBlockState } from '../../../store/actions/authActions';
 import { getFriends } from '../../../store/actions/friendsActions';
+import { removeActiveUser } from '../../../store/actions/activeUsersActions';
 
 interface Props {
   user: IUser;
@@ -93,6 +94,7 @@ const ProfileHeaderUser: FC<Props> = (props) => {
   const onUnfriend = (): void => {
     props.onUnfriend();
     setBtnDropdownShow(false);
+    dispatch(removeActiveUser(props.user._id));
   };
 
   const friendsDropdown = [
@@ -142,6 +144,7 @@ const ProfileHeaderUser: FC<Props> = (props) => {
       relationTransformed = "sentPendingRequests";
     }
     dispatch(blockUser(props.user._id, relationTransformed));
+    dispatch(removeActiveUser(props.user._id));
     setReadyToBlockUser(false);
   }, [dispatch, props.friendStatus, props.user._id]);
 

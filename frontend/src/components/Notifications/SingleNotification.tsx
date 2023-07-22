@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useCallback } from 'react';
+import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../../styles/components/notifications/singleNotifications.module.scss';
 import noUserImg from '../../images/no-user.jpg';

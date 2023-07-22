@@ -2,7 +2,6 @@ const http = require("http");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const runSocket = require("./socket");
-const { activeUsers, addActiveUser, removeActiveUser } = require("./activeUsers");
 
 dotenv.config();
 
@@ -13,7 +12,7 @@ const PORT = process.env.PORT || 8000;
 
 const server = http.createServer(app);
 
-runSocket(server, activeUsers, addActiveUser, removeActiveUser);
+runSocket(server);
 
 mongoose.set("strictQuery", false);
 mongoose.connect(DB)

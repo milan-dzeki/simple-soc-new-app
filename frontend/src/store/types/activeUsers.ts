@@ -8,12 +8,20 @@ export interface IActiveUser {
 }
 
 export enum ActiveUserActionTypes {
-  ON_GET_ACTIVE_USERS = "ON_GET_ACTIVE_USERS"
+  ON_GET_ACTIVE_USERS = "ON_GET_ACTIVE_USERS",
+  ON_REMOVE_ACTIVE_USER = "ON_REMOVE_ACTIVE_USER"
 }
 
 export interface OnGetActiveUsersAction {
   type: ActiveUserActionTypes.ON_GET_ACTIVE_USERS;
   activeUsers: IActiveUser[];
 }
+export interface OnRemoveActiveUserAction {
+  type: ActiveUserActionTypes.ON_REMOVE_ACTIVE_USER;
+  userId: string;
+}
 
-export type ActiveUsersAction = OnGetActiveUsersAction;
+export type ActiveUsersAction = (
+  OnGetActiveUsersAction |
+  OnRemoveActiveUserAction
+);

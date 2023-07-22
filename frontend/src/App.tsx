@@ -28,6 +28,7 @@ const ChatsPage = lazy(() => import("./pages/ChatsPage"));
 const SinglePostPage = lazy(() => import("./pages/SinglePostPage"));
 const SinglePhotoPage = lazy(() => import("./pages/SinglePhotoPage"));
 const SearchUsers = lazy(() => import("./pages/SearchUsers"));
+const AppInfoPage = lazy(() => import("./pages/AppInfo"));
 
 const App: FC = () => {
   const dispatch = useDispatch();
@@ -109,6 +110,7 @@ const App: FC = () => {
             <Route path="post/:postId" element={<SinglePostPage />} />
             <Route path="photo/:albumId/:photoId" element={<SinglePhotoPage />} />
             <Route path="search" element={<SearchUsers />} />
+            <Route path="info" element={<AppInfoPage />} />
           </Route>
         </Routes>
       </Suspense>

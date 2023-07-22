@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent, useState, useEffect, useCallback, useRef, UIEventHandler } from 'react';
+import { ChangeEvent, FC, FormEvent, useState, useEffect, useCallback, useRef } from 'react';
 import styles from '../../styles/components/chatsAndMessages/selectedChat.module.scss';
 import noUserImg from '../../images/no-user.jpg';
 import moment from 'moment';
@@ -211,7 +211,6 @@ const SelectedChat: FC<Props> = (props) => {
                             className={`message__${message.status}`}
                             onChange={(inView) => {
                               if(inView && message.status !== "seen") {
-                                console.log("VIEW", message._id);
                                 onAddToUnseenVisibleMessages(message._id);
                               }
                             }}>

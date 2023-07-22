@@ -63,8 +63,6 @@ const ChatsPage: FC = () => {
 
   useEffect(() => {
     socket.on("receiveMessage", ({userId, chatId, newLastMessage, message}) => {
-      console.log("WTF");
-      
       dispatch(receiveMessageSuccess(chatId, newLastMessage, userId));
 
       setSelectedChat(prev => {
@@ -81,7 +79,6 @@ const ChatsPage: FC = () => {
     });
 
     socket.on("seenMessages", ({userId, chatId, newUnreadMsgsList, hasLastMsg}) => {
-      console.log("SEEN", userId, chatId, newUnreadMsgsList, hasLastMsg);
       dispatch(userSeenMyMsgs(userId, chatId, newUnreadMsgsList, hasLastMsg));
 
       setSelectedChat(prev => {
@@ -129,7 +126,6 @@ const ChatsPage: FC = () => {
           Authorization: `Bearer ${token}`
         }
       });
-      console.log(data);
       
       setSelectedChat({
         chatId,
@@ -149,8 +145,6 @@ const ChatsPage: FC = () => {
       onGetSingleChat(location.state.clickedChatId, location.state.userId);
     }
   }, [location.state]);
-
-  // useEffect();
 
   const onSendMessage = async(event: FormEvent<HTMLFormElement>, messageText: string, messagePhoto: File | null): Promise<void> => {
     event.preventDefault();
@@ -215,9 +209,6 @@ const ChatsPage: FC = () => {
           }
           return message;
         });
-        // console.log(newMessages);
-        
-        
         return {
           ...prev,
           messages: newMessages,
@@ -236,7 +227,7 @@ const ChatsPage: FC = () => {
       <ChatsBox
         onGetSingleChat={onGetSingleChat} />
       {
-        selectedChat && (
+        selectedChat ? (
           <SelectedChat
             loading={selectedChatLoading}
             errorMsg={selectedChatErrorMsg}
@@ -249,7 +240,7 @@ const ChatsPage: FC = () => {
             onOpenPhotoSlider={onOpenPhotoSlider}
             isScrolling={isScrolling}
             setIsScrolling={setIsScrolling} />
-        )
+        ) : <p style={{margin: "2rem", fontSize: "2rem"}}>No Chat selected</p>
       }
       {
         selectedChat && (

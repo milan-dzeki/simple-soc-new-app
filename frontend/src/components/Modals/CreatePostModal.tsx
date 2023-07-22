@@ -6,7 +6,6 @@ import { IInput } from '../../types/formsAndInputs/inputType';
 import { IFriend } from '../../store/types/friendsTypes';
 // components
 import Backdrop from '../Shared/Backdrop';
-import CloseBtn from '../Buttons/CloseBtn';
 import ModalBtn from '../Buttons/ModalBtn';
 import Input from '../Inputs/Input';
 import ModalTitle from './ModalTitle';

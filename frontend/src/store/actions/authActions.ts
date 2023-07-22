@@ -43,7 +43,7 @@ export const onClearAuthError = (): OnClearAuthErrorAction => {
 };
 
 const authSuccess = (token: string, user: IAuthUser): OnAuthSuccessAction => {
-  socket.emit("addActiveUser", {userId: user._id});
+  // socket.emit("addActiveUser", {userId: user._id});
   return {
     type: AuthActionTypes.ON_AUTH_SUCCESS,
     token,
@@ -63,6 +63,7 @@ export const signup = (providedData: FormData) => {
       });
 
       dispatch(authSuccess(data.token, data.user));
+      socket.emit("addActiveUser", {userId: data.user._id});
       localStorage.setItem("socNetAppToken", data.token);
     } catch(error) {
       dispatch(authFail((error as any).response.data.message));
@@ -77,6 +78,7 @@ export const login = (providedData: {email: string; password: string}) => {
     try {
       const { data } = await axiosAuth.post<IAuthSuccessResponse>("/login", providedData);
       dispatch(authSuccess(data.token, data.user));
+      socket.emit("addActiveUser", {userId: data.user._id});
       localStorage.setItem("socNetAppToken", data.token);
     } catch(error) {
       dispatch(authFail((error as any).response.data.message));
@@ -103,6 +105,7 @@ export const isLoggedIn = () => {
     try {
       const { data } = await axiosAuth.post<IAuthSuccessResponse>("/isLoggedIn", {token});
       dispatch(authSuccess(data.token, data.user));
+      socket.emit("addActiveUser", {userId: data.user._id});
     } catch(error) {
       dispatch(logout());
       return;

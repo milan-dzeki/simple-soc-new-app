@@ -4,6 +4,7 @@ import reducer from "./useSendMessageReducer";
 import { IUseSendMessageActionTypes, IUseSendMessageState } from "./useSendMessageTypes";
 import axiosChat from "../../axios/axiosChat";
 import { IInput } from "../../types/formsAndInputs/inputType";
+import socket from "../../socketIo";
 
 const initState: IUseSendMessageState = {
   sendMessageLoading: false,
@@ -103,7 +104,7 @@ export const useSendMessage = (): {
     const token = localStorage.getItem("socNetAppToken");
 
     try {
-      await axiosChat.post("/sendModalMessage", formData, {
+      const { data } = await axiosChat.post("/sendModalMessage", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data"
@@ -111,6 +112,8 @@ export const useSendMessage = (): {
       });
 
       dispatch({ type: IUseSendMessageActionTypes.ON_SEND_MESSAGE_SUCCESS });
+      // socket.emit("sendModalMessage", {userId: });
+      socket.emit("sendMessage", {userId: state.sendMessageUserId, chatId: data.chatId, newLastMessage: data.newLastMessage, message: data.newMessage});
     } catch(error) {
       dispatch({
         type: IUseSendMessageActionTypes.ON_SEND_MESSAGE_FAIL,
