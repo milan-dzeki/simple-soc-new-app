@@ -28,7 +28,7 @@ const SingleNotification: FC<Props> = (props) => {
     } else if(requestStatus === "declined") {
       setNotificationFriendRequestStatus("declined");
     } else {
-      return;
+      setNotificationFriendRequestStatus(null);
     }
     dispatch(resetRequestStatus());
   }, [requestStatus, dispatch])

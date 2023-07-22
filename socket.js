@@ -57,7 +57,7 @@ const runSocket = (server) => {
 
   IO.on("connection", (socket) => {
     console.log("User Connected");
-
+    IO.emit("getActiveUsers", {activeUsers: activeUsers});
     socket.on("addActiveUser", ({userId}) => {
       const newActiveUsers = addActiveUser(userId, socket.id);
       IO.emit("getActiveUsers", {activeUsers: newActiveUsers});
