@@ -85,15 +85,15 @@ const App: FC = () => {
 
   useEffect(() => {
     socket.on("receiveMessage", ({chatId}) => {
-      if(pathname !== "/chats") {
+      // if(pathname !== "/chats") {
         dispatch(receiveMessageWhileNotOnChatsPageSuccess(chatId));
-      }
+      // }
     });
 
     return () => {
       socket.off("receiveMessage");
     };
-  }, [pathname, dispatch]);
+  }, [dispatch]);
 
   return (
     <>

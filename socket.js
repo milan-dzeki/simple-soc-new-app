@@ -1,5 +1,6 @@
 const io = require("socket.io");
 const User = require("./models/userModel");
+const { Server } = require("socket.io");
 
 let activeUsers = [];
 
@@ -57,7 +58,7 @@ const runSocket = (server) => {
 
   IO.on("connection", (socket) => {
     console.log("User Connected");
-    IO.emit("getActiveUsers", {activeUsers: activeUsers});
+    
     socket.on("addActiveUser", ({userId}) => {
       const newActiveUsers = addActiveUser(userId, socket.id);
       IO.emit("getActiveUsers", {activeUsers: newActiveUsers});
@@ -69,10 +70,6 @@ const runSocket = (server) => {
       newLastMessage,
       message
     }) => {
-      console.log(userId,
-      chatId,
-      newLastMessage,
-      message);
       const user = activeUsers.find(user => user.userId.toString() === userId.toString());
       if(user) {
         user.socketIds.forEach(socketId => {

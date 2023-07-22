@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { usePosts } from '../hooks/usePostsHook/usePosts';
 // types
 import { IProfile, IProfileResponseData } from '../types/profilePages/profileInfo';
-import { IPhotoAlbum } from '../types/profilePages/photoAlbum';
 // components
 import Spinner from '../components/Shared/Spinner';
 import PageContainer from '../components/Shared/PageContainer';
