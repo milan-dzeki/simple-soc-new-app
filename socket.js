@@ -1,6 +1,5 @@
 const io = require("socket.io");
 const User = require("./models/userModel");
-const { Server } = require("socket.io");
 
 let activeUsers = [];
 
@@ -58,7 +57,7 @@ const runSocket = (server) => {
 
   IO.on("connection", (socket) => {
     console.log("User Connected");
-    
+
     socket.on("addActiveUser", ({userId}) => {
       const newActiveUsers = addActiveUser(userId, socket.id);
       IO.emit("getActiveUsers", {activeUsers: newActiveUsers});
