@@ -63,12 +63,15 @@ const App: FC = () => {
   useEffect(() => {
     let reconnectionTimeOut: any;
 
+    socket.on("connect", () => {
+      socket.on("getActiveUsers", ({activeUsers}) => {
+          dispatch(getActiveUsers(activeUsers));
+        });
+    });
+
     socket.on("disconnect", () => {
       reconnectionTimeOut = setTimeout(() => {
         socket.connect();
-        socket.on("getActiveUsers", ({activeUsers}) => {
-          dispatch(getActiveUsers(activeUsers));
-        });
       }, 5000);
     });
 
