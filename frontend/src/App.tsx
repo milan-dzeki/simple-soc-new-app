@@ -47,6 +47,40 @@ const App: FC = () => {
     }
   }, [token, dispatch]);
 
+  const handleBeforeUnload = (event: any) => {
+    // Clear the reconnect timeout if it's set
+    // clearTimeout(reconnectTimeout);
+
+    // Attempt intentional disconnection before the page is closed or refreshed
+    // setIntentionalDisconnect(true);
+    socket.disconnect(); // Optionally, you can also perform any other cleanup here
+
+    // Show a confirmation prompt to the user (browser-specific behavior)
+    event.preventDefault();
+    event.returnValue = ""; // Some browsers require a return value to display a prompt
+  };
+
+  useEffect(() => {
+    let reconnectionTimeOut: any;
+
+    socket.on("disconnect", () => {
+      reconnectionTimeOut = setTimeout(() => {
+        socket.connect();
+        socket.on("getActiveUsers", ({activeUsers}) => {
+          dispatch(getActiveUsers(activeUsers));
+        });
+      }, 5000);
+    });
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      socket.off("disconnect");
+      clearTimeout(reconnectionTimeOut);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, [dispatch]);
+
   useEffect(() => {
     socket.on("getActiveUsers", ({activeUsers}) => {
       dispatch(getActiveUsers(activeUsers));
@@ -85,15 +119,15 @@ const App: FC = () => {
 
   useEffect(() => {
     socket.on("receiveMessage", ({chatId}) => {
-      // if(pathname !== "/chats") {
+      if(pathname !== "/chats") {
         dispatch(receiveMessageWhileNotOnChatsPageSuccess(chatId));
-      // }
+      }
     });
 
     return () => {
       socket.off("receiveMessage");
     };
-  }, [dispatch]);
+  }, [dispatch, pathname]);
 
   return (
     <>
