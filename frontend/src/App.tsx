@@ -33,7 +33,7 @@ const AppInfoPage = lazy(() => import("./pages/AppInfo"));
 const App: FC = () => {
   const dispatch = useDispatch();
   const {pathname} = useLocation();
-  const { token } = useTypedSelector(state => state.auth);
+  const { token, authUser } = useTypedSelector(state => state.auth);
 
   useEffect(() => {
     dispatch(isLoggedIn());
@@ -64,12 +64,19 @@ const App: FC = () => {
     let reconnectionTimeOut: any;
 
     socket.on("connect", () => {
-      socket.on("getActiveUsers", ({activeUsers}) => {
-          dispatch(getActiveUsers(activeUsers));
-        });
+      console.log("CONNECTED");
+      
+      if(authUser) {
+        socket.emit("addActiveUser", {userId: authUser._id});
+      }
+      // socket.on("getActiveUsers", ({activeUsers}) => {
+      //     dispatch(getActiveUsers(activeUsers));
+      //   });
     });
 
     socket.on("disconnect", () => {
+      console.log("DISCONNECTED");
+      
       reconnectionTimeOut = setTimeout(() => {
         socket.connect();
       }, 5000);
@@ -82,7 +89,7 @@ const App: FC = () => {
       clearTimeout(reconnectionTimeOut);
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
-  }, [dispatch]);
+  }, [dispatch, authUser]);
 
   useEffect(() => {
     socket.on("getActiveUsers", ({activeUsers}) => {

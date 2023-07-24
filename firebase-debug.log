@@ -1,0 +1,150 @@
+[debug] [2023-07-23T17:05:56.058Z] ----------------------------------------------------------------------
+[debug] [2023-07-23T17:05:56.063Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2023-07-23T17:05:56.063Z] CLI Version:   9.6.0
+[debug] [2023-07-23T17:05:56.064Z] Platform:      win32
+[debug] [2023-07-23T17:05:56.064Z] Node Version:  v18.17.0
+[debug] [2023-07-23T17:05:56.065Z] Time:          Sun Jul 23 2023 19:05:56 GMT+0200 (Central European Summer Time)
+[debug] [2023-07-23T17:05:56.065Z] ----------------------------------------------------------------------
+[debug] [2023-07-23T17:05:56.066Z] 
+[debug] [2023-07-23T17:05:56.076Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-23T17:05:56.078Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Bate\Desktop\SIIMPLE_SOC_NETW_APP - Copy
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2023-07-23T17:07:57.252Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects  
+ {"projectId":"soc-net-app","name":"soc-net-app"}
+[debug] [2023-07-23T17:07:58.258Z] <<< HTTP RESPONSE 409 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Sun, 23 Jul 2023 17:07:59 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=790","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2023-07-23T17:07:58.259Z] <<< HTTP RESPONSE BODY {"error":{"code":409,"message":"Requested entity already exists","status":"ALREADY_EXISTS"}}
+[debug] [2023-07-23T17:07:58.386Z] FirebaseError: HTTP Error: 409, Requested entity already exists
+    at module.exports (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:38:12)
+    at Request._callback (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:41:35)
+    at self.callback (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (node:events:514:28)
+    at Request.emit (node:domain:489:12)
+    at Request.<anonymous> (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1154:10)
+    at Request.emit (node:events:514:28)
+    at Request.emit (node:domain:489:12)
+    at IncomingMessage.<anonymous> (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1076:12)
+    at Object.onceWrapper (node:events:628:28)
+    at IncomingMessage.emit (node:events:526:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[error] 
+[error] Error: Failed to create project because there is already a project with ID soc-net-app. Please try again with a unique project ID.
+[debug] [2023-07-23T17:08:07.960Z] ----------------------------------------------------------------------
+[debug] [2023-07-23T17:08:07.963Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2023-07-23T17:08:07.964Z] CLI Version:   9.6.0
+[debug] [2023-07-23T17:08:07.964Z] Platform:      win32
+[debug] [2023-07-23T17:08:07.964Z] Node Version:  v18.17.0
+[debug] [2023-07-23T17:08:07.966Z] Time:          Sun Jul 23 2023 19:08:07 GMT+0200 (Central European Summer Time)
+[debug] [2023-07-23T17:08:07.966Z] ----------------------------------------------------------------------
+[debug] [2023-07-23T17:08:07.967Z] 
+[debug] [2023-07-23T17:08:07.975Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-23T17:08:07.976Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Bate\Desktop\SIIMPLE_SOC_NETW_APP - Copy
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2023-07-23T17:08:32.054Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects  
+ {"projectId":"social-network-simple","name":"networkApp"}
+[debug] [2023-07-23T17:08:33.035Z] <<< HTTP RESPONSE 409 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Sun, 23 Jul 2023 17:08:34 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=795","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2023-07-23T17:08:33.035Z] <<< HTTP RESPONSE BODY {"error":{"code":409,"message":"Requested entity already exists","status":"ALREADY_EXISTS"}}
+[debug] [2023-07-23T17:08:33.157Z] FirebaseError: HTTP Error: 409, Requested entity already exists
+    at module.exports (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:38:12)
+    at Request._callback (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:41:35)
+    at self.callback (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (node:events:514:28)
+    at Request.emit (node:domain:489:12)
+    at Request.<anonymous> (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1154:10)
+    at Request.emit (node:events:514:28)
+    at Request.emit (node:domain:489:12)
+    at IncomingMessage.<anonymous> (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1076:12)
+    at Object.onceWrapper (node:events:628:28)
+    at IncomingMessage.emit (node:events:526:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[error] 
+[error] Error: Failed to create project because there is already a project with ID social-network-simple. Please try again with a unique project ID.
+[debug] [2023-07-23T17:08:42.439Z] ----------------------------------------------------------------------
+[debug] [2023-07-23T17:08:42.442Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init hosting
+[debug] [2023-07-23T17:08:42.442Z] CLI Version:   9.6.0
+[debug] [2023-07-23T17:08:42.443Z] Platform:      win32
+[debug] [2023-07-23T17:08:42.443Z] Node Version:  v18.17.0
+[debug] [2023-07-23T17:08:42.444Z] Time:          Sun Jul 23 2023 19:08:42 GMT+0200 (Central European Summer Time)
+[debug] [2023-07-23T17:08:42.445Z] ----------------------------------------------------------------------
+[debug] [2023-07-23T17:08:42.445Z] 
+[debug] [2023-07-23T17:08:42.452Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-07-23T17:08:42.453Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Bate\Desktop\SIIMPLE_SOC_NETW_APP - Copy
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2023-07-23T17:09:02.114Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects  
+ {"projectId":"17ssyshdsdlldd","name":"simple-network-app"}
+[debug] [2023-07-23T17:09:03.057Z] <<< HTTP RESPONSE 400 {"vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Sun, 23 Jul 2023 17:09:04 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=748","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2023-07-23T17:09:03.057Z] <<< HTTP RESPONSE BODY {"error":{"code":400,"message":"field [project_id] has issue [project_id contains invalid characters]","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"project_id","description":"project_id contains invalid characters"}]},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"url":"https://cloud.google.com/resource-manager/reference/rest/v1/projects"}]}]}}
+[debug] [2023-07-23T17:09:03.178Z] FirebaseError: HTTP Error: 400, field [project_id] has issue [project_id contains invalid characters]
+    at module.exports (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:38:12)
+    at Request._callback (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\lib\api.js:41:35)
+    at self.callback (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:185:22)
+    at Request.emit (node:events:514:28)
+    at Request.emit (node:domain:489:12)
+    at Request.<anonymous> (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1154:10)
+    at Request.emit (node:events:514:28)
+    at Request.emit (node:domain:489:12)
+    at IncomingMessage.<anonymous> (C:\Users\Bate\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\request\request.js:1076:12)
+    at Object.onceWrapper (node:events:628:28)
+    at IncomingMessage.emit (node:events:526:35)
+    at IncomingMessage.emit (node:domain:489:12)
+    at endReadableNT (node:internal/streams/readable:1359:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+[error] 
+[error] Error: Failed to create project. See firebase-debug.log for more info.
