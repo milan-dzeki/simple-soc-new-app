@@ -82,7 +82,7 @@ const App: FC = () => {
         if(authUser) {
           socket.emit("addActiveUser", {userId: authUser._id});
         }
-      }, 5000);
+      }, 2000);
     });
 
     window.addEventListener("beforeunload", handleBeforeUnload);
