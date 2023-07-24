@@ -63,22 +63,25 @@ const App: FC = () => {
   useEffect(() => {
     let reconnectionTimeOut: any;
 
-    socket.on("connect", () => {
-      console.log("CONNECTED");
+    // socket.on("connect", () => {
+    //   console.log("CONNECTED");
       
-      if(authUser) {
-        socket.emit("addActiveUser", {userId: authUser._id});
-      }
-      // socket.on("getActiveUsers", ({activeUsers}) => {
-      //     dispatch(getActiveUsers(activeUsers));
-      //   });
-    });
+    //   if(authUser) {
+    //     socket.emit("addActiveUser", {userId: authUser._id});
+    //   }
+    //   // socket.on("getActiveUsers", ({activeUsers}) => {
+    //   //     dispatch(getActiveUsers(activeUsers));
+    //   //   });
+    // });
 
     socket.on("disconnect", () => {
       console.log("DISCONNECTED");
       
       reconnectionTimeOut = setTimeout(() => {
         socket.connect();
+        if(authUser) {
+          socket.emit("addActiveUser", {userId: authUser._id});
+        }
       }, 5000);
     });
 
