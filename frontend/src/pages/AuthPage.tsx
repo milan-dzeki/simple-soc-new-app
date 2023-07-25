@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 // components
 import AuthHeader from '../components/Headers/AuthHeader';
 import AuthForm from '../components/Forms/AuthForm';
+import AuthUsers from '../components/AuthPage/AuthUsers';
 import ModalBtn from '../components/Buttons/ModalBtn';
 // redux
 import { onClearAuthError } from '../store/actions/authActions';
@@ -45,6 +46,7 @@ const AuthPage: FC = () => {
       )}
       <AuthHeader />
       <main>
+        <AuthUsers />
         <AuthForm loading={authLoading} />
       </main>
     </>

@@ -182,6 +182,12 @@ const AppInfo: FC = () => {
           </p>
         </div>
         <div className={styles.info__box}>
+          <h3 className={styles.info__subtitle}>Responsiveness</h3>
+          <p className={styles.info__text}>
+            App is done via "desktop first" approach. As screen gets smaller, it is fairly responsive up to 300px. Bellow that point, things can get messy.
+          </p>
+        </div>
+        <div className={styles.info__box}>
           <h3 className={styles.info__subtitle}>
             Other missing features
           </h3>
