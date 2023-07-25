@@ -8,10 +8,8 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import Backdrop from '../Shared/Backdrop';
 import SingleNotification from './SingleNotification';
 import Spinner from '../Shared/Spinner';
-import DefaultModal from '../Modals/DefaultModal';
-import ModalBtn from '../Buttons/ModalBtn';
 // redux
-import { getNotifications, clearNotifError } from '../../store/actions/notificationsActions';
+import { getNotifications } from '../../store/actions/notificationsActions';
 
 interface Props {
   show: boolean;

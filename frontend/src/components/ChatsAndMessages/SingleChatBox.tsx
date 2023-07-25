@@ -16,6 +16,7 @@ interface Props {
   onGetSingleChat?: (chatId: string, userId: string) => Promise<void>;
   numOfUnseenMessages: number;
   onCloseChatsBox?: () => void;
+  chatSelectedId? : string | null;
 }
 
 const SingleChatBox: FC<Props> = (props) => {
@@ -69,7 +70,7 @@ const SingleChatBox: FC<Props> = (props) => {
 
   return props.isChatsPageBox
   ? (
-    <div className={`${styles.chat} ${props.isChatsPageBox ? styles.chat__cp : ""}`} onClick={() => props.onGetSingleChat!(props.chat._id, props.user._id)}>
+    <div className={`${styles.chat} ${props.isChatsPageBox ? styles.chat__cp : ""} ${props.chatSelectedId === props.chat._id ? styles.chat__selected : ""}`} onClick={() => props.onGetSingleChat!(props.chat._id, props.user._id)}>
       {innerContent}
     </div>
   )

@@ -1,4 +1,4 @@
-import { FC, lazy, Suspense, useEffect } from 'react';
+import { FC, lazy, Suspense, useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import socket from './socketIo';
 // hooks
@@ -35,6 +35,8 @@ const App: FC = () => {
   const {pathname} = useLocation();
   const { token, authUser } = useTypedSelector(state => state.auth);
 
+  const [intentionalDisconnect, setIntentionalDisconnect] = useState(false);
+
   useEffect(() => {
     dispatch(isLoggedIn());
   }, [dispatch]);
@@ -48,13 +50,10 @@ const App: FC = () => {
   }, [token, dispatch]);
 
   const handleBeforeUnload = (event: any) => {
-    // Clear the reconnect timeout if it's set
-    // clearTimeout(reconnectTimeout);
-
     // Attempt intentional disconnection before the page is closed or refreshed
-    // setIntentionalDisconnect(true);
+    setIntentionalDisconnect(true);
     socket.disconnect(); // Optionally, you can also perform any other cleanup here
-
+    
     // Show a confirmation prompt to the user (browser-specific behavior)
     event.preventDefault();
     event.returnValue = ""; // Some browsers require a return value to display a prompt
@@ -63,26 +62,19 @@ const App: FC = () => {
   useEffect(() => {
     let reconnectionTimeOut: any;
 
-    // socket.on("connect", () => {
-    //   console.log("CONNECTED");
-      
-    //   if(authUser) {
-    //     socket.emit("addActiveUser", {userId: authUser._id});
-    //   }
-    //   // socket.on("getActiveUsers", ({activeUsers}) => {
-    //   //     dispatch(getActiveUsers(activeUsers));
-    //   //   });
-    // });
-
     socket.on("disconnect", () => {
       console.log("DISCONNECTED");
       
-      reconnectionTimeOut = setTimeout(() => {
-        socket.connect();
-        if(authUser) {
-          socket.emit("addActiveUser", {userId: authUser._id});
-        }
-      }, 2000);
+      if(!intentionalDisconnect) {
+        reconnectionTimeOut = setTimeout(() => {
+          socket.connect();
+          if(authUser) {
+            socket.emit("addActiveUser", {userId: authUser._id});
+          }
+        }, 2000);
+      } else {
+        setIntentionalDisconnect(false);
+      }
     });
 
     window.addEventListener("beforeunload", handleBeforeUnload);
@@ -92,7 +84,7 @@ const App: FC = () => {
       clearTimeout(reconnectionTimeOut);
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
-  }, [dispatch, authUser]);
+  }, [dispatch, authUser, intentionalDisconnect]);
 
   useEffect(() => {
     socket.on("getActiveUsers", ({activeUsers}) => {

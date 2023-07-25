@@ -7,6 +7,7 @@ import Spinner from '../Shared/Spinner';
 
 interface Props {
   onGetSingleChat: (chatId: string, userId: string) => Promise<void>;
+  selectedChatId: string | null;
 }
 
 const ChatsBox: FC<Props> = (props) => {
@@ -111,7 +112,8 @@ const ChatsBox: FC<Props> = (props) => {
                           user={getUserForChat(chat.users)}
                           isChatsPageBox={true}
                           onGetSingleChat={onGetSingleChatAndCloseSmallScreenBox}
-                          numOfUnseenMessages={getAuthUserUnreadMessages(chat._id)} />
+                          numOfUnseenMessages={getAuthUserUnreadMessages(chat._id)}
+                          chatSelectedId={props.selectedChatId ? props.selectedChatId : null} />
                       );
                     })
                   }

@@ -1,7 +1,6 @@
 const http = require("http");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-// const runSocket = require("./socket");
 const io = require("socket.io");
 const User = require("./models/userModel");
 
@@ -13,9 +12,6 @@ const DB = process.env.DATABASE_URL;
 const PORT = process.env.PORT || 8000;
 
 const server = http.createServer(app);
-
-// runSocket(server);
-
 
 let activeUsers = [];
 
@@ -182,7 +178,9 @@ IO.on("connection", (socket) => {
     if(disconnectingUser) {
       await User.findByIdAndUpdate(disconnectingUser.userId, {lastTimeSeen: Date.now()});
     }
-    const newActiveUsers = await removeActiveUser(socket.id);
+    // const newActiveUsers = await removeActiveUser(socket.id);
+    const newActiveUsers = activeUsers.filter(user => user.userId !== disconnectingUser.userId);
+    activeUsers = [...newActiveUsers];
     
     IO.emit("getActiveUsers", {activeUsers: newActiveUsers});
   });

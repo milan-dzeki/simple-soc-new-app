@@ -225,7 +225,8 @@ const ChatsPage: FC = () => {
   return (
     <ChatsPageContainer>
       <ChatsBox
-        onGetSingleChat={onGetSingleChat} />
+        onGetSingleChat={onGetSingleChat}
+        selectedChatId={selectedChat ? selectedChat.chatId : null} />
       {
         selectedChat ? (
           <SelectedChat

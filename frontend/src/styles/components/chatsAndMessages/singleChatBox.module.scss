@@ -10,6 +10,26 @@
   transition: all 0.2s ease-out;
   cursor: pointer;
 
+  &__selected {
+    background-color: $main-dark;
+
+    .chat__image {
+      border-color: white;
+    }
+
+    .chat__username {
+      color: white;
+    }
+
+    .chat__message {
+      color: white;
+    }
+
+    .chat__time {
+      color: white;
+    }
+  }
+
   @media (max-width: 600px) {
     padding: 1rem 1.5rem;
   }

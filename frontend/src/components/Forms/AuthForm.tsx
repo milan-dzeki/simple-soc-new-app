@@ -103,6 +103,10 @@ const AuthForm: FC<Props> = (props) => {
       }
     }
 
+    if(profilePhotoInput.photoFile) {
+      formData.append("photo", profilePhotoInput.photoFile);
+    }
+
     dispatch(signup(formData));
   };
 

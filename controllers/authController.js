@@ -64,7 +64,7 @@ exports.signup = catchAsync(async(req, res, next) => {
     blockedMe: []
   };
 
-  const profilePhoto = req.files.profilePhoto;
+  const profilePhoto = req.files.photo;
   if(profilePhoto) {
     const photoRes = await cloudinary.uploader.upload(profilePhoto.path);
     if(photoRes) {

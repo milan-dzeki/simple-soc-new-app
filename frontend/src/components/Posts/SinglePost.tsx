@@ -10,6 +10,7 @@ import { IPost } from '../../types/shared/post';
 import LikesAndCommentsContainer from '../LikesAndComments/LikesAndCommentsContainer';
 // utils
 import { formatDateToFullTime } from '../../utils/formatDateToFullTime';
+import { IPostPhoto } from '../../hooks/usePostsHook/usePostsTypes';
 
 interface Props {
   post: IPost;
@@ -24,6 +25,7 @@ interface Props {
   hideLikingOption?: boolean;
   hideCommentingOption?: boolean;
   homePagePost?: boolean;
+  onOpenPostPhotoSlider?: (postId: string, photos: IPostPhoto[], displayedPhotoIndex: number) => void;
 }
 
 const SinglePost: FC<Props> = (props) => {
@@ -64,9 +66,9 @@ const SinglePost: FC<Props> = (props) => {
             <div className={styles.post__taggs_list}>
               {props.post.taggs.map(tagg => {
                 return (
-                  <p key={tagg._id} className={styles.post__taggs_single}>
+                  <Link to={`/user/${tagg._id}`} key={tagg._id} className={styles.post__taggs_single}>
                     {tagg.fullName}
-                  </p>
+                  </Link>
                 );
               })}
             </div>
@@ -77,11 +79,12 @@ const SinglePost: FC<Props> = (props) => {
             <div className={styles.post__photos}>
               <div className={styles.post__photos_content}>
                 {
-                  props.post.photos.map(photo => {
+                  props.post.photos.map((photo, i) => {
                     return (
                       <div
                         key={photo._id}
-                        className={styles.post__photo}>
+                        className={styles.post__photo}
+                        onClick={() => props.onOpenPostPhotoSlider!(props.post._id, props.post.photos, i)}>
                         <img src={photo.photo.secure_url} alt="post_image" />
                       </div>
                     );

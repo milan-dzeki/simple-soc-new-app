@@ -133,14 +133,14 @@ exports.createPost = catchAsync(async(req, res, next) => {
 
   let createdPhotos = [];
   if(Object.keys(photos).length > 0) {
-    let postsAlbum = await PhotoAlbum.findOne({name: "Posts Photos"});
-    if(!postsAlbum) {
-      postsAlbum = await PhotoAlbum.create({
-        user: req.user._id,
-        albumName: "Posts Photos",
-        photos: []
-      });
-    }
+    // let postsAlbum = await PhotoAlbum.findOne({name: "Posts Photos"});
+    // if(!postsAlbum) {
+    //   postsAlbum = await PhotoAlbum.create({
+    //     user: req.user._id,
+    //     albumName: "Posts Photos",
+    //     photos: []
+    //   });
+    // }
     for(const photo in photos) {
       const result = await cloudinary.uploader.upload(photos[photo].path);
       createdPhotos.push({

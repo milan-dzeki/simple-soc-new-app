@@ -5,6 +5,8 @@ import SinglePost from './SinglePost';
 import DefaultModal from '../Modals/DefaultModal';
 import ModalBtn from '../Buttons/ModalBtn';
 import Spinner from '../Shared/Spinner';
+import PostPhotoSlider from './PostPhotoSlider';
+import { IPostPhoto } from '../../hooks/usePostsHook/usePostsTypes';
 
 interface Props {
   loading?: boolean;
@@ -27,6 +29,13 @@ interface Props {
 
 const PostsContaniner: FC<Props> = (props) => {
   const { onDeletePostComment } = props;
+
+  const [postSliderInfo, setPostSliderInfo] = useState<{postId: string | null; photos: string[]; displayedPhotoIndex: number}>({
+    postId: null,
+    photos: [],
+    displayedPhotoIndex: 0
+  });
+
   const [deleteCommentInfo, setDeleteCommentInfo] = useState<{postId: string | null; commentId: string | null}>({
     postId: null,
     commentId: null
@@ -51,10 +60,34 @@ const PostsContaniner: FC<Props> = (props) => {
     onCloseDeletePostCommentModal();
   }, [deleteCommentInfo, onDeletePostComment]);
 
+  const onOpenPostPhotoSlider = useCallback((postId: string, photos: IPostPhoto[], displayedPhotoIndex: number): void => {
+    const photoUrls = photos.map(photo => photo.photo.secure_url);
+    setPostSliderInfo({
+      postId,
+      photos: photoUrls,
+      displayedPhotoIndex
+    });
+  }, []);
+
+  const onClosePostPhotoSlider = (): void => {
+    setPostSliderInfo({
+      postId: null,
+      photos: [],
+      displayedPhotoIndex: 0
+    });
+  };
+
   if(props.loading) return <Spinner />;
 
   return (
     <>
+      {postSliderInfo.postId !== null && postSliderInfo.photos.length > 0 && (
+        <PostPhotoSlider
+          show={postSliderInfo.postId !== null && postSliderInfo.photos.length > 0}
+          onClose={onClosePostPhotoSlider}
+          photos={postSliderInfo.photos}
+          displayedPhotoIndex={postSliderInfo.displayedPhotoIndex} />
+      )}
       {deleteCommentInfo.postId !== null && deleteCommentInfo.commentId !== null && (
         <DefaultModal
           show={deleteCommentInfo.postId !== null && deleteCommentInfo.commentId !== null}
@@ -94,7 +127,8 @@ const PostsContaniner: FC<Props> = (props) => {
                   onUnlikePostComment={props.onUnlikePostComment}
                   hideLikingOption={props.hideLikingOption || false}
                   hideCommentingOption={props.hideCommentingOption || false}
-                  homePagePost={props.homePagePosts || false} />
+                  homePagePost={props.homePagePosts || false}
+                  onOpenPostPhotoSlider={onOpenPostPhotoSlider} />
               );
             })
           }
